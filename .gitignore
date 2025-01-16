@@ -1,0 +1,21 @@
+# Node modules
+node_modules/
+
+# TypeScript build files
+*.tsbuildinfo
+
+# IDE specific files (optional)
+.vscode/
+.idea/
+
+# macOS specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
+
+# Log files
+*.log
+
+# npm package lock file
+package-lock.json

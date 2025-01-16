@@ -1,0 +1,1 @@
+// market-service/index.ts
