@@ -12,7 +12,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "all": "concurrently \"npm start\" \"cd ../server/auth-service && npm run dev\" \"cd ../server/gateway && npm run dev\" \"cd ../server/market-service && npm run dev\" \"cd ../server/social-service && npm run dev\""
   },
   "eslintConfig": {
     "extends": [
@@ -31,5 +32,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   }
 }
