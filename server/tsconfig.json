@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "node", // Node module resolution strategy
+        "esModuleInterop": true, // Enable esModuleInterop for default imports
+        "skipLibCheck": true, // Skip checking of declaration files
+        "target": "esnext", // Set ECMAScript target
+        "module": "commonjs", // For Node.js compatibility
+        "strict": true, // Enable strict type-checking options
+        "baseUrl": ".", // Base directory for module resolution
+        "paths": {
+            "*": [
+                "node_modules/*"
+            ] // Customize module paths
+        }
+    },
+    "include": [
+        "gateway/src/**/*.ts", // Gateway's source files
+        "auth-service/src/**/*.ts", // Auth service source files
+        "social-service/src/**/*.ts", // Social service source files
+        "market-service/src/**/*.ts" // Market service source files
+    ],
+    "exclude": [
+        "node_modules" // Exclude node_modules from the build process
+    ]
+}
