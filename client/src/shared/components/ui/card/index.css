@@ -1,0 +1,39 @@
+.card-container {
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: 0px 10px 8px black;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin: 0.5rem;
+    background-color: #02111d;
+    height: fit-content;
+}
+
+.card-img {
+    width: 100%;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.card-title,
+.card-description {
+    margin: 0.5rem 5%;
+    text-align: center;
+    font-family: 'Coolvetica';
+    color: white;
+}
+
+.card-link {
+    text-align: center;
+    width: 80%;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    background-color: #b7a57a;
+    color: white;
+    text-decoration: none;
+    margin: 0 5%;
+}
+
+.card-link:hover {
+    scale: 1.05;
+}
