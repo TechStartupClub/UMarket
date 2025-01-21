@@ -1,1 +1,1 @@
-// social-service/index.ts
+//nodeJS app instance for social

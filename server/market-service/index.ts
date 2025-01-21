@@ -1,1 +1,1 @@
-// market-service/index.ts
+//nodeJS app instance for market
