@@ -15,4 +15,4 @@ const authPool = new Pool({
 
 module.exports = {
     query: (text: string, params: any) => authPool.query(text, params),
-}
+};
