@@ -1,18 +1,17 @@
-require("dotenv").config();
+import dotenv from "dotenv";
+import { Pool } from "pg";
 
-const { Pool } = require("pg");
+dotenv.config({ path: "../../.env" });
 
 const socialPool = new Pool({
     user: process.env.PG_USER,   
     host: process.env.PG_HOST, 
     database: process.env.PG_NAME,   
     password: process.env.PG_SERVICE_ROLE_KEY,
-    port: process.env.PG_PORT || 5432,
+    port: Number(process.env.PG_PORT),
     ssl: {
         rejectUnauthorized: false
     }
 });
 
-module.exports = {
-    query: (text: string, params: any) => socialPool.query(text, params),
-}
+export default socialPool;

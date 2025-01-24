@@ -1,0 +1,69 @@
+services: 
+  auth-service:
+    build:
+      context: ./
+      dockerfile: ./server/auth-service/Dockerfile
+    ports:
+      - ${AUTH_SERVICE_PORT}:${AUTH_SERVICE_PORT}
+    volumes:
+      - ./server/auth-service:/auth-app
+    env_file:
+      - .env
+    environment:
+      - AUTH_SERVICE_PORT=${AUTH_SERVICE_PORT}
+      - PG_USER=${PG_USER}
+      - PG_HOST=${PG_HOST}
+      - PG_NAME=${PG_NAME}
+      - PG_SERVICE_ROLE_KEY=${PG_SERVICE_ROLE_KEY}
+      - PG_PORT=${PG_PORT}
+  gateway-service:
+    build:
+      context: ./
+      dockerfile: ./server/gateway/Dockerfile
+    ports:
+      - ${GATEWAY_PORT}:${GATEWAY_PORT}
+    volumes:
+      - ./server/gateway:/gateway-app
+    env_file:
+      - .env
+    environment:
+      - GATEWAY_PORT=${GATEWAY_PORT}
+      - PG_USER=${PG_USER}
+      - PG_HOST=${PG_HOST}
+      - PG_NAME=${PG_NAME}
+      - PG_SERVICE_ROLE_KEY=${PG_SERVICE_ROLE_KEY}
+      - PG_PORT=${PG_PORT}
+  market-service:
+    build:
+      context: ./
+      dockerfile: ./server/market-service/Dockerfile
+    ports:
+      - ${MARKET_SERVICE_PORT}:${MARKET_SERVICE_PORT}
+    volumes:
+      - ./server/market-service:/market-app
+    env_file:
+      - .env
+    environment:
+      - MARKET_SERVICE_PORT=${MARKET_SERVICE_PORT}
+      - PG_USER=${PG_USER}
+      - PG_HOST=${PG_HOST}
+      - PG_NAME=${PG_NAME}
+      - PG_SERVICE_ROLE_KEY=${PG_SERVICE_ROLE_KEY}
+      - PG_PORT=${PG_PORT}
+  social-service:
+    build:
+      context: ./
+      dockerfile: ./server/social-service/Dockerfile
+    ports:
+      - ${SOCIAL_SERVICE_PORT}:${SOCIAL_SERVICE_PORT}
+    volumes:
+      - ./server/social-service:/social-app
+    env_file:
+      - .env
+    environment:
+      - SOCIAL_SERVICE_PORT=${SOCIAL_SERVICE_PORT}
+      - PG_USER=${PG_USER}
+      - PG_HOST=${PG_HOST}
+      - PG_NAME=${PG_NAME}
+      - PG_SERVICE_ROLE_KEY=${PG_SERVICE_ROLE_KEY}
+      - PG_PORT=${PG_PORT}

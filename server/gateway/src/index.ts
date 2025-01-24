@@ -8,7 +8,7 @@ import marketRoutes from "./routes/marketRoutes";
 // import msgRoutes from "./routes/msgRoutes";
 
 // Load environment variables from .env file
-dotenv.config()
+dotenv.config({ path: "../../.env" });
 
 // Initialize the express server
 const app = express();
