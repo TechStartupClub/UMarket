@@ -2,16 +2,16 @@
   margin: 0;
   padding: 0;
   width: 100%;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Inter", sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  background-color: #ffffff;
-  color: #213547;
+  background-color: #fff;
+  color: black;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+ }
 
 * {
   margin: 0;
@@ -26,14 +26,18 @@ body {
   min-width: 320px;
 }
 
+h1, .logo {
+  font-family: "Newsreader", serif;
+}
+
 a {
   font-weight: 500;
-  color: #0066cc;
+  color: black;
   text-decoration: none;
 }
 
 a:hover {
-  color: #0052a3;
+  color: black;
 }
 
 h1 {
