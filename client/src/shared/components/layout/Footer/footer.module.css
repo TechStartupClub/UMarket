@@ -1,11 +1,11 @@
 .footer {
-    background-color: #f8f9fa;
+    background: linear-gradient(135deg, #fcc765 0%, #ffa41b 100%);
     padding: 1rem 0;
     margin-top: auto;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1440px;
     margin: 0 auto;
     padding: 0 1rem;
 }
@@ -22,6 +22,5 @@
 }
 
 .links a {
-    color: #666;
     text-decoration: none;
 }

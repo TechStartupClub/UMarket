@@ -1,0 +1,21 @@
+.topbar {
+    padding-top: 15px;
+    color: black;
+    font-size: 14px;
+}
+
+.content {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.left span, .right span {
+    margin-right: 50px;
+}
+
+.left span:last-child, .right span:last-child {
+    margin-right: 0;
+}
