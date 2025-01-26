@@ -21,6 +21,10 @@
     flex-shrink: 0; /* Prevent the logo from shrinking */
 }
 
+.logo:hover {
+    color: #A78BFA;
+ }
+
 .input {
     padding: 12px;
     line-height: 1;
@@ -39,8 +43,15 @@
     box-shadow: 0 0 0 0.2rem rgba(139, 92, 246, 0.25);
 }
 
+.searchForm {
+    display: flex;
+    flex: 1;
+    gap: 35px;
+}
+
 .search {
     background-color: #8B5CF6;
+    border: none;
     border-radius: 30px;
     padding: 12px 30px;
     line-height: 1;
