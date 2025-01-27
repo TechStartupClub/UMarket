@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './shared/routes/Home';
+import MarketPage from './market/routes/Home'
 import './App.css';  // Keep this if you have global styles you want to maintain
 
 const App: React.FC = () => {
@@ -8,6 +9,7 @@ const App: React.FC = () => {
         <Router>
             <Routes>
                 <Route path="/" element={<HomePage />} />
+                <Route path="/market" element={<MarketPage />} />
                 {/* Add more routes as needed */}
                 {/* Example:
                 <Route path="/market" element={<MarketplacePage />} />
