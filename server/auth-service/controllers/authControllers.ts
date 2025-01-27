@@ -3,9 +3,25 @@ import bcrypt from "bcrypt";
 
 const db = require("../config/db");
 
+interface RegisterRequestBody {
+    username: string;
+    email: string;
+    password: string;
+}
+
+interface User {
+    user_id: number;
+    auth_provider: string;
+}
+
+interface AuthResult {
+    user_id: number;
+    created_at: string; // or data
+}
+
 export const register = async (req: Request, res: Response): Promise<void> => {
     try {
-        const { username, email, password } = req.body;
+        const { username, email, password }: RegisterRequestBody = req.body;
 
         if (!username || !email || !password) {
             res.status(400).json({ 
@@ -35,7 +51,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
             RETURNING user_id, auth_provider
         `;
         const insertUserParams = [username, email];
-        const userResult = await db.query(insertUserQuery, insertUserParams);
+        const userResult: { rows: User[] } = await db.query(insertUserQuery, insertUserParams);
         
         const userId = userResult.rows[0].user_id;
         const authProvider = userResult.rows[0].auth_provider;
@@ -48,7 +64,15 @@ export const register = async (req: Request, res: Response): Promise<void> => {
             RETURNING user_id, created_at
         `;
         const insertAuthParams = [userId, hashedPassword, authProvider];
-        const authResult = await db.query(insertAuthQuery, insertAuthParams);
+        const authResult: { rows: AuthResult[] } = await db.query(insertAuthQuery, insertAuthParams);
+
+        if (authResult.rows.length === 0) {
+            res.status(500).json({
+                success: false,
+                message: "Error creating user authentication record"
+            });
+            return;
+        }
 
         console.log(`${authResult.rows[0].created_at} - User ${authResult.rows[0].user_id} Registered`);
 
