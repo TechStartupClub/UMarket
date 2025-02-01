@@ -1,5 +1,5 @@
 # Pick Node.js to run instance of node app
-FROM node:18
+FROM node:20
 
 # Set working directory in the container
 WORKDIR /social-app

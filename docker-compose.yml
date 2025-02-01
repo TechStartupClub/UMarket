@@ -1,4 +1,15 @@
-services: 
+services:
+  react:
+    build:
+      context: ./
+      dockerfile: client/Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./client/src:/react-app/src
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - VITE_HOST=0.0.0.0 
   auth-service:
     build:
       context: ./
