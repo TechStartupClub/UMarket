@@ -1,6 +1,7 @@
 import React from 'react';
 import Style from './index.module.css';
 import Sidebar from '../../components/Sidebar';
+import ListView from '../../components/ListView';
 
 const Home: React.FC = () => {
     return (
@@ -9,6 +10,7 @@ const Home: React.FC = () => {
             <section>
                 <div className={Style.marketContent}>
                     <Sidebar></Sidebar>
+                    <ListView></ListView>
                 </div>
             </section>
         </main>
