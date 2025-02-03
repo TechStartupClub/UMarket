@@ -8,16 +8,14 @@ if (!AUTH_SERVICE_URL) {
     throw new Error("Missing AUTH_SERVICE_URL environment variable")
 }
 
-// Proxy requests to the auth service
+// Proxy all requests under `/auth` to the auth microservice
 authRoutes.use(
-    "/register",
+    "/",
     createProxyMiddleware({
         target: AUTH_SERVICE_URL,
         changeOrigin: true,
-        pathRewrite: { "^/auth/register": "/register" },
+        pathRewrite: { "^/auth": "" },
     })
 );
-
-// Add more routes as necessary
 
 export default authRoutes; 

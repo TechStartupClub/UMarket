@@ -1,11 +1,21 @@
 import { Express } from "express";
+import cors from "cors";
+import authRoutes from "./routes/authRoutes";
 
 require('dotenv').config();
 const express = require("express");
 
+// Initilize Express app for auth
 const authApp: Express = express();
-
 const port: string | undefined | Number = process.env.AUTH_SERVICE_PORT;
+
+// Middleware
+authApp.use(cors());
+authApp.use(express.json());
+authApp.use(express.urlencoded({ extended: true }));
+
+// Routes
+authApp.use("/", authRoutes);
 
 authApp.listen(port, () => {
     console.log(`server is listening on port ${port}`);
