@@ -16,7 +16,7 @@ COPY server/social-service /social-app
 # Expose Port
 EXPOSE ${SOCIAL_SERVICE_PORT}
 
-# Comamands to start nodemon
+# Commands to start nodemon
 CMD ["npm", "run", "dev"]
 
 
