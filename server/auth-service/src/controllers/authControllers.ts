@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 const db = require("../config/db");
 
@@ -24,9 +24,9 @@ export const register = async (req: Request, res: Response): Promise<void> => {
         const { username, email, password }: RegisterRequestBody = req.body;
 
         if (!username || !email || !password) {
-            res.status(400).json({ 
-                success: false, 
-                message: "Username, email, and password are required" 
+            res.status(400).json({
+                success: false,
+                message: "Username, email, and password are required"
             });
             return;
         }
@@ -52,7 +52,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
         `;
         const insertUserParams = [username, email];
         const userResult: { rows: User[] } = await db.query(insertUserQuery, insertUserParams);
-        
+
         const userId = userResult.rows[0].user_id;
         const authProvider = userResult.rows[0].auth_provider;
 
