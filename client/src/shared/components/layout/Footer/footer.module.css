@@ -1,27 +1,64 @@
 .footer {
-    background-color: #f8f9fa;
-    padding: 1rem 0;
-    margin-top: auto;
-}
-
-.container {
-    max-width: 1200px;
+    background: linear-gradient(135deg, #fcc765 0%, #ffa41b 100%);
+    padding: 4rem 6rem 2rem;
+ }
+ 
+ .container {
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 0 1rem;
-}
-
-.content {
+    font-weight: bold;
+ }
+ 
+ .mainContent {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    margin-bottom: 4rem;
+    align-items: center;
+ }
+ 
+ .logo {
+    width: 180px;
+    height: auto;
+ }
+ 
+ .linkGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+ }
+ 
+ .createdBy {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+ }
+ 
+ .links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+ }
+ 
+ .links a {
+    text-decoration: none;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    font-weight: bold;
+ }
+ 
+ .legalSection {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.links {
+    font-size: 0.875rem;
+ }
+ 
+ .legalLinks {
     display: flex;
-    gap: 1.5rem;
-}
-
-.links a {
-    color: #666;
+    gap: 2rem;
+ }
+ 
+ .legalLinks a {
     text-decoration: none;
-}
+ }
