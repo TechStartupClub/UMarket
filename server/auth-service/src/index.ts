@@ -4,8 +4,10 @@ import dotenv from "dotenv"
 import authPool from "./config/db";
 import cors from "cors";
 import authRoutes from "./routes/authRoutes";
+import path from "path"
 
-dotenv.config({ path: "../../.env" });
+// dotenv.config({ path: "../../env" });
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 // Initialize Express app for auth
 const authApp: Express = express();
