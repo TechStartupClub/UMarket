@@ -1,13 +1,18 @@
 import { Express } from "express";
+import express from "express";
+import dotenv from "dotenv"
+import authPool from "./config/db";
 import cors from "cors";
 import authRoutes from "./routes/authRoutes";
+import path from "path"
 
-require('dotenv').config();
-const express = require("express");
+// dotenv.config({ path: "../../env" });
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
-// Initilize Express app for auth
+// Initialize Express app for auth
 const authApp: Express = express();
-const port: string | undefined | Number = process.env.AUTH_SERVICE_PORT;
+
+const port: string | Number | undefined = process.env.AUTH_SERVICE_PORT;
 
 // Middleware
 authApp.use(cors());
@@ -18,13 +23,15 @@ authApp.use(express.urlencoded({ extended: true }));
 authApp.use("/", authRoutes);
 
 authApp.listen(port, () => {
-    console.log(`server is listening on port ${port}`);
+    console.log(`AUTH server is listening on port ${port}`);
 });
 
 // Close Pool connection when signal is interrupted
 process.on('SIGINT', async () => {
     console.log("Shutting Down");
-    await authPool.end();
+    await authPool.end().then(() => {
+        console.log("Signal Interrupted");
+    });
     process.exit(0);
 });
 
@@ -35,4 +42,4 @@ process.on('SIGTERM', async () => {
     process.exit(0);
 });
 
-module.exports = authApp;
+export default authApp;

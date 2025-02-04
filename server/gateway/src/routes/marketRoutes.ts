@@ -1,5 +1,7 @@
 import { Router } from "express";
 import { createProxyMiddleware } from "http-proxy-middleware";
+import dotenv from "dotenv"
+dotenv.config({ path: "../../.env" });
 
 // Initialize market router and get the service URL
 const marketRoutes: Router = Router();
