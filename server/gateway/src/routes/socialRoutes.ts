@@ -10,36 +10,26 @@ if (!SOCIAL_SERVICE_URL) {
     throw new Error("Missing SOCIAL_SERVICE_URL environment variable")
 }
 
-// Breaks things!!!!!!
-// socialRoutes.use(
-//     "/posts",
-//     createProxyMiddleware({
-//         target: SOCIAL_SERVICE_URL,
-//         changeOrigin: true,
-//         pathRewrite: { "^/social/posts": "/posts" },
-//     })
-// );
-
 socialRoutes.use(
     "/",
     createProxyMiddleware({
         target: SOCIAL_SERVICE_URL,
         changeOrigin: true,
         // debug
-        // on: {
-        //     proxyReq: (proxyReq, req, res) => {
-        //         console.log('Proxying request to:', SOCIAL_SERVICE_URL + proxyReq.path);
-        //     },
-        //     error: (err, req, res) => {
-        //         console.error('Proxy Error:', err);
-        //         res.end(JSON.stringify({ 
-        //             error: 'Proxy Error', 
-        //             details: err.message,
-        //             target: SOCIAL_SERVICE_URL,
-        //             path: req.url
-        //         }));
-        //     }
-        // }
+        on: {
+            proxyReq: (proxyReq, req, res) => {
+                console.log('Proxying request to:', SOCIAL_SERVICE_URL + proxyReq.path);
+            },
+            error: (err, req, res) => {
+                console.error('Proxy Error:', err);
+                res.end(JSON.stringify({
+                    error: 'Proxy Error',
+                    details: err.message,
+                    target: SOCIAL_SERVICE_URL,
+                    path: req.url
+                }));
+            }
+        }
     })
 
 );

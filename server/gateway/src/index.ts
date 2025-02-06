@@ -21,10 +21,10 @@ if (!GATEWAY_PORT) {
 app.use(cors());
 
 // debug middleware
-// app.use((req: Request, res: Response, next: NextFunction) => {
-//     console.log(`Incoming request: ${req.method} ${req.path}`);
-//     next();
-// });
+app.use((req: Request, res: Response, next: NextFunction) => {
+    console.log(`Incoming request: ${req.method} ${req.path}`);
+    next();
+});
 
 // Middleware for parsing JSON and URL-encoded data
 app.use(express.json());
