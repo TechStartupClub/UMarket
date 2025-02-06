@@ -44,6 +44,14 @@ services:
       - PG_NAME=${PG_NAME}
       - PG_SERVICE_ROLE_KEY=${PG_SERVICE_ROLE_KEY}
       - PG_PORT=${PG_PORT}
+
+      - SOCIAL_SERVICE_URL=http://social-service:${SOCIAL_SERVICE_PORT}
+      - AUTH_SERVICE_URL=http://auth-service:${AUTH_SERVICE_PORT}
+      - MARKET_SERVICE_URL=http://market-service:${MARKET_SERVICE_PORT}
+    depends_on: 
+      - social-service
+      - auth-service
+      - market-service
   market-service:
     build:
       context: ./
