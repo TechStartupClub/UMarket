@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import bcrypt from "bcryptjs";
 
-const db = require("../config/db");
+import authPool from "../config/db";
 
 interface RegisterRequestBody {
     username: string;
@@ -34,7 +34,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
         // Check if the user already exists
         const userExistsQuery = `SELECT * FROM users WHERE username = $1 OR email = $2`;
         const userExistsParams = [username, email];
-        const existingUser = await db.query(userExistsQuery, userExistsParams);
+        const existingUser = await authPool.query(userExistsQuery, userExistsParams);
 
         if (existingUser.rows.length > 0) {
             res.status(409).json({
@@ -51,7 +51,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
             RETURNING user_id, auth_provider
         `;
         const insertUserParams = [username, email];
-        const userResult: { rows: User[] } = await db.query(insertUserQuery, insertUserParams);
+        const userResult: { rows: User[] } = await authPool.query(insertUserQuery, insertUserParams);
 
         const userId = userResult.rows[0].user_id;
         const authProvider = userResult.rows[0].auth_provider;
@@ -64,7 +64,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
             RETURNING user_id, created_at
         `;
         const insertAuthParams = [userId, hashedPassword, authProvider];
-        const authResult: { rows: AuthResult[] } = await db.query(insertAuthQuery, insertAuthParams);
+        const authResult: { rows: AuthResult[] } = await authPool.query(insertAuthQuery, insertAuthParams);
 
         if (authResult.rows.length === 0) {
             res.status(500).json({
