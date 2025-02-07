@@ -1,17 +1,27 @@
-import dotenv from "dotenv";
+import dotenv from "dotenv"
 import { Pool } from "pg";
 
-dotenv.config({ path: "../../.env" });
+dotenv.config({ path: "../../.env"});
 
-const socialPool = new Pool({
-    user: process.env.PG_USER,   
-    host: process.env.PG_HOST, 
-    database: process.env.PG_NAME,   
-    password: process.env.PG_SERVICE_ROLE_KEY,
+const socialPool : Pool = new Pool({
+    host: process.env.PG_HOST,
     port: Number(process.env.PG_PORT),
-    ssl: {
-        rejectUnauthorized: false
-    }
+    database: process.env.PG_DATABASE,
+    user: process.env.PG_USER,
+    password: process.env.PG_PASS
 });
+
+async function connectToDatabase() {
+    try {
+      await socialPool.connect();
+      console.log('Connected to Supabase!');
+    } catch (error) {
+      console.error('Error connecting to Supabase:', error);
+    }
+  }
+  
+  connectToDatabase();
+
+
 
 export default socialPool;
