@@ -23,9 +23,9 @@ services:
     environment:
       - AUTH_SERVICE_PORT=${AUTH_SERVICE_PORT}
       - PG_USER=${PG_USER}
+      - PG_DATABASE=${PG_DATABASE}
       - PG_HOST=${PG_HOST}
-      - PG_NAME=${PG_NAME}
-      - PG_SERVICE_ROLE_KEY=${PG_SERVICE_ROLE_KEY}
+      - PG_PASS=${PG_PASS}
       - PG_PORT=${PG_PORT}
   gateway-service:
     build:
@@ -39,12 +39,7 @@ services:
       - .env
     environment:
       - GATEWAY_PORT=${GATEWAY_PORT}
-      - PG_USER=${PG_USER}
-      - PG_HOST=${PG_HOST}
-      - PG_NAME=${PG_NAME}
-      - PG_SERVICE_ROLE_KEY=${PG_SERVICE_ROLE_KEY}
-      - PG_PORT=${PG_PORT}
-
+      
       - SOCIAL_SERVICE_URL=http://social-service:${SOCIAL_SERVICE_PORT}
       - AUTH_SERVICE_URL=http://auth-service:${AUTH_SERVICE_PORT}
       - MARKET_SERVICE_URL=http://market-service:${MARKET_SERVICE_PORT}
@@ -65,9 +60,9 @@ services:
     environment:
       - MARKET_SERVICE_PORT=${MARKET_SERVICE_PORT}
       - PG_USER=${PG_USER}
+      - PG_DATABASE=${PG_DATABASE}
       - PG_HOST=${PG_HOST}
-      - PG_NAME=${PG_NAME}
-      - PG_SERVICE_ROLE_KEY=${PG_SERVICE_ROLE_KEY}
+      - PG_PASS=${PG_PASS}
       - PG_PORT=${PG_PORT}
   social-service:
     build:
@@ -82,7 +77,7 @@ services:
     environment:
       - SOCIAL_SERVICE_PORT=${SOCIAL_SERVICE_PORT}
       - PG_USER=${PG_USER}
+      - PG_DATABASE=${PG_DATABASE}
       - PG_HOST=${PG_HOST}
-      - PG_NAME=${PG_NAME}
-      - PG_SERVICE_ROLE_KEY=${PG_SERVICE_ROLE_KEY}
+      - PG_PASS=${PG_PASS}
       - PG_PORT=${PG_PORT}
