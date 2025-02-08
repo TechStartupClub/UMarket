@@ -31,7 +31,6 @@ socialRoutes.use(
             }
         }
     })
-
 );
 
 export default socialRoutes; 

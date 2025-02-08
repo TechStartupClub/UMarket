@@ -2,6 +2,7 @@ import { Router } from "express";
 import { createProxyMiddleware } from "http-proxy-middleware";
 import dotenv from "dotenv"
 dotenv.config({ path: "../../.env" });
+
 // Initialize auth router and get the service URL
 const authRoutes: Router = Router();
 const AUTH_SERVICE_URL: string | undefined = process.env.AUTH_SERVICE_URL;
@@ -15,7 +16,7 @@ authRoutes.use(
     createProxyMiddleware({
         target: AUTH_SERVICE_URL,
         changeOrigin: true,
-        pathRewrite: { "^/auth": "" },
+        // pathRewrite: { "^/auth": "" }, // works without this
     })
 );
 

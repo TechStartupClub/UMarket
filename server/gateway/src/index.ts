@@ -48,5 +48,5 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 // Start the server and listen on the specified port
 app.listen(GATEWAY_PORT, () => {
-    console.log(`Server running on port ${GATEWAY_PORT}`);
+    console.log(`GATEWAY running on port ${GATEWAY_PORT}`);
 });

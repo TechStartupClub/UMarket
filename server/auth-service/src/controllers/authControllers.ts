@@ -1,116 +1,52 @@
 import { Request, Response } from "express";
-import bcrypt from "bcryptjs";
-
+import jwt from "jsonwebtoken";
 import authPool from "../config/db";
 
-interface RegisterRequestBody {
-    username: string;
-    email: string;
-    password: string;
-}
-
 interface User {
-    user_id: number;
-    auth_provider: string;
-}
+    google_id: string;
+    display_name: string;
+    email: string;
+};
 
-interface AuthResult {
-    user_id: number;
-    created_at: string; // or data
-}
+interface DecodedUser extends User {
+    iat?: number;
+    exp?: number;
+};
 
-export const register = async (req: Request, res: Response): Promise<void> => {
-    try {
-        const { username, email, password }: RegisterRequestBody = req.body;
-
-        if (!username || !email || !password) {
-            res.status(400).json({
-                success: false,
-                message: "Username, email, and password are required"
-            });
-            return;
-        }
-
-        // Check if the user already exists
-        const userExistsQuery = `SELECT * FROM users WHERE username = $1 OR email = $2`;
-        const userExistsParams = [username, email];
-        const existingUser = await authPool.query(userExistsQuery, userExistsParams);
-
-        if (existingUser.rows.length > 0) {
-            res.status(409).json({
-                success: false,
-                message: "User with these credentials already exists"
-            });
-            return;
-        }
-
-        // Insert new user into the users table
-        const insertUserQuery = `
-            INSERT INTO users (username, email)
-            VALUES ($1, $2)
-            RETURNING user_id, auth_provider
-        `;
-        const insertUserParams = [username, email];
-        const userResult: { rows: User[] } = await authPool.query(insertUserQuery, insertUserParams);
-
-        const userId = userResult.rows[0].user_id;
-        const authProvider = userResult.rows[0].auth_provider;
-
-        // Insert new entry into the user_auths table
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const insertAuthQuery = `
-            INSERT INTO user_auths (user_id, hashed_password, auth_method) 
-            VALUES ($1, $2, $3)
-            RETURNING user_id, created_at
-        `;
-        const insertAuthParams = [userId, hashedPassword, authProvider];
-        const authResult: { rows: AuthResult[] } = await authPool.query(insertAuthQuery, insertAuthParams);
-
-        if (authResult.rows.length === 0) {
-            res.status(500).json({
-                success: false,
-                message: "Error creating user authentication record"
-            });
-            return;
-        }
-
-        console.log(`${authResult.rows[0].created_at} - User ${authResult.rows[0].user_id} Registered`);
-
-        res.status(201).json({
-            success: true,
-            message: "User registered successfully",
-            user: {
-                user_id: userId,
-                username,
-                email,
-                created_at: authResult.rows[0].created_at
-            }
-        });
-    } catch (error: any) {
-        console.error("Error during user registration:", error.message);
-
-        if (error.code === "23505") { // PostgreSQL unique_violation error code
-            res.status(409).json({
-                success: false,
-                message: "Email already exists",
-            });
-        } else {
-            res.status(500).json({
-                success: false,
-                message: "An unexpected error occurred. Please try again later.",
-            });
-        }
+export const googleCallback = async (req: Request, res: Response): Promise<void> => {
+    if (!req.user) {
+        res.status(401).json({ message: "Authentication failed" });
+        return;
     }
+
+    const user = req.user as User;
+
+    // generate access token
+    const token = jwt.sign(user, process.env.JWT_SECRET as string, { expiresIn: "30m" });
+
+    // set access token in cookies
+    res.cookie("token", token, { httpOnly: true, sameSite: "strict" }); // adjust for HTTPS later
+
+    // decide on refresh token later
+
+    /*
+    CHANGE THE REDIRECT ROUTE FOR WHATEVER NEEDED
+    */
+    res.redirect("http://localhost:5173/profile");
 };
 
-export const login = async (req: Request, res: Response): Promise<void> => {
+export const verify = async (req: Request, res: Response): Promise<void> => {
+    const token = req.cookies.token;
 
-};
+    if (!token) {
+        res.status(401).json({ message: "Unauthorized user" });
+        return;
+    }
 
-export const logout = async (req: Request, res: Response): Promise<void> => {
-
-};
-
-export const generateToken = async (req: Request, res: Response): Promise<void> => {
-
+    try {
+        const user = jwt.verify(token, process.env.JWT_SECRET as string) as DecodedUser;
+        res.json(user);
+    } catch {
+        res.status(401).json({ message: "Invalid token" });
+    }
 };
