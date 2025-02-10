@@ -5,7 +5,7 @@ FROM node:20
 WORKDIR /auth-app
 
 # Copy dependencies
-COPY server/auth-service/package.json server/auth-service/package-lock.json ./
+COPY server/auth-service/package.json ./
 
 # Install dependencies
 RUN npm install

@@ -39,10 +39,13 @@ services:
       - .env
     environment:
       - GATEWAY_PORT=${GATEWAY_PORT}
+      - MARKET_SERVICE_PORT=${MARKET_SERVICE_PORT}
+      - AUTH_SERVICE_PORT=${AUTH_SERVICE_PORT}
+      - SOCIAL_SERVICE_PORT=${SOCIAL_SERVICE_PORT}
       
-      - SOCIAL_SERVICE_URL=http://social-service:${SOCIAL_SERVICE_PORT}
-      - AUTH_SERVICE_URL=http://auth-service:${AUTH_SERVICE_PORT}
-      - MARKET_SERVICE_URL=http://market-service:${MARKET_SERVICE_PORT}
+      - SOCIAL_SERVICE_URL=${SOCIAL_SERVICE_URL}
+      - AUTH_SERVICE_URL=${AUTH_SERVICE_URL}
+      - MARKET_SERVICE_URL=${MARKET_SERVICE_URL}
     depends_on: 
       - social-service
       - auth-service

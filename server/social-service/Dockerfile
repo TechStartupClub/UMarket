@@ -5,7 +5,7 @@ FROM node:20
 WORKDIR /social-app
 
 # Copy dependencies
-COPY server/social-service/package.json server/social-service/package-lock.json ./
+COPY server/social-service/package.json ./
 
 # Install dependencies
 RUN npm install

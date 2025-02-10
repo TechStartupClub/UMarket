@@ -5,7 +5,7 @@ FROM node:20
 WORKDIR /market-app
 
 # Copy dependencies
-COPY server/market-service/package.json server/market-service/package-lock.json ./
+COPY server/market-service/package.json ./
 
 # Install dependencies
 RUN npm install

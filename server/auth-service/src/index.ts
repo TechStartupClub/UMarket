@@ -13,7 +13,11 @@ const authApp: Express = express();
 const port: string | Number | undefined = process.env.AUTH_SERVICE_PORT;
 
 // Middleware
-authApp.use(cors());
+authApp.use(cors({
+    origin: "http://localhost:4000", // Replace with the actual gateway URL
+    methods: "GET,POST,PUT,DELETE",  // Adjust allowed methods
+    allowedHeaders: "Content-Type, Authorization",
+}));
 authApp.use(express.json());
 authApp.use(express.urlencoded({ extended: true }));
 

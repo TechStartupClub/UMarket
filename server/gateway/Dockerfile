@@ -5,7 +5,7 @@ FROM node:20
 WORKDIR /gateway-app
 
 # Copy dependencies
-COPY server/gateway/package.json server/gateway/package-lock.json ./
+COPY server/gateway/package.json ./
 
 # Install dependencies
 RUN npm install
