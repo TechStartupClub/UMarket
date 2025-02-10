@@ -2,7 +2,7 @@ import { Express } from "express";
 import express from "express";
 import dotenv from "dotenv"
 import cors from "cors";
-import postRoutes from "./routes/postRoutes";
+import socialRoutes from "./routes/socialRoutes";
 import socialPool from "./config/db";
 
 dotenv.config({ path: "../../.env" });
@@ -18,7 +18,7 @@ socialServiceApp.use(express.json());
 socialServiceApp.use(express.urlencoded({ extended: true }));
 
 // Routes
-socialServiceApp.use("/", postRoutes);
+socialServiceApp.use("/", socialRoutes);
 
 socialServiceApp.listen(port, () => {
     console.log(`social server is listening on port ${port}`);
