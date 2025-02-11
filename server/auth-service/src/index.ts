@@ -3,7 +3,7 @@ import express from "express";
 import dotenv from "dotenv"
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import passport from "passport";
+import passport from "./config/passport";
 import authPool from "./config/db";
 import authRoutes from "./routes/authRoutes";
 

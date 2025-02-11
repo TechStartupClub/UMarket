@@ -3,6 +3,9 @@ import { Pool } from "pg";
 
 dotenv.config({ path: "../../.env" });
 
+/**
+ * Creates and configures a connection pool to the PostgreSQL database.
+ */
 const authPool: Pool = new Pool({
   host: process.env.PG_HOST,
   port: Number(process.env.PG_PORT),
@@ -11,6 +14,10 @@ const authPool: Pool = new Pool({
   password: process.env.PG_PASS
 });
 
+/**
+ * Establishes a connection to the PostgreSQL database.
+ * Logs a success message on successful connection or an error message on failure.
+ */
 async function connectToDatabase() {
   try {
     await authPool.connect();

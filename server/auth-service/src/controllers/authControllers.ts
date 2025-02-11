@@ -13,6 +13,11 @@ interface DecodedUser extends User {
     exp?: number;
 };
 
+/**
+ * Handles the Google OAuth callback.
+ * - Generates an access token for the user.
+ * - Sets the token in cookies for subsequent requests.
+ */
 export const googleCallback = async (req: Request, res: Response): Promise<void> => {
     if (!req.user) {
         res.status(401).json({ message: "Authentication failed" });
@@ -21,10 +26,8 @@ export const googleCallback = async (req: Request, res: Response): Promise<void>
 
     const user = req.user as User;
 
-    // generate access token
+    // generate and set access token
     const token = jwt.sign(user, process.env.JWT_SECRET as string, { expiresIn: "30m" });
-
-    // set access token in cookies
     res.cookie("token", token, { httpOnly: true, sameSite: "strict" }); // adjust for HTTPS later
 
     // decide on refresh token later
@@ -35,6 +38,11 @@ export const googleCallback = async (req: Request, res: Response): Promise<void>
     res.redirect("http://localhost:5173/profile");
 };
 
+/**
+ * Verifies the JWT token from cookies.
+ * - Returns user information if valid token is present.
+ * - Sends 401 if token is missing or invalid.
+ */
 export const verify = async (req: Request, res: Response): Promise<void> => {
     const token = req.cookies.token;
 
