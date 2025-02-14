@@ -1,13 +1,10 @@
 import express from 'express';
-// importing the getRecentItems function from marketControllers
-import { getRecentItems } from '../controllers/marketControllers';
+import { getRecentItems } from '../controllers/marketControllers'; // Import the controller function
 
-// creating a new router object
+// Create a new router
 const router = express.Router();
 
-// '/items/recent' is the endpoint for this route
-// getRecentItems is the controller function that will be called when the endpoint is hit
+// ../recent?amount=00 is the query parameter that will be passed to the controller
 router.get("/market/items/recent", getRecentItems);
 
-// then export
 export default router;
