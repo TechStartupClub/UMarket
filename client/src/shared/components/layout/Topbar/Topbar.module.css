@@ -1,33 +1,37 @@
 .topbar {
-    padding-top: 15px;
-    color: black;
-    font-size: 12px;
- }
- 
- .content {
-    max-width: 1440px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
- }
- 
- .left, .right {
-    display: flex;
- }
- 
- .left a, .right a {
-    margin-right: 75px;
-    color: black;
-    text-decoration: none;
- }
- 
- .left a:last-child, .right a:last-child {
-    margin-right: 0;
- }
- 
- .left span, .right span {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
- }
+   padding: 8px 0;
+   color: black;
+   font-size: 12px;
+   background-color: white;
+}
+
+.content {
+   max-width: 1440px;
+   margin: 0 auto;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0 20px; /* Added padding for consistent edge spacing */
+}
+
+.left, .right {
+   display: flex;
+   gap: 20px; /* Replace margin-right with gap for consistent spacing */
+   align-items: center;
+}
+
+.left a, .right a {
+   color: black;
+   text-decoration: none;
+}
+
+/* Remove margin-right override since we're using gap */
+/* .left a:last-child, .right a:last-child {
+   margin-right: 0;
+} */
+
+.left span, .right span {
+   display: inline-flex;
+   align-items: center;
+   gap: 4px; /* Keep this small gap for icon spacing */
+}

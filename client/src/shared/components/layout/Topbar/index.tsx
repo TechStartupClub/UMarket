@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Topbar.module.css';
-import { HiShoppingCart } from 'react-icons/hi';
 
 const Topbar: React.FC = () => {
     return (
@@ -15,9 +14,8 @@ const Topbar: React.FC = () => {
                 <div className={styles.right}>
                     <Link to="/sell"><span>Sell</span></Link>
                     <Link to="/watchlist"><span>Watchlist</span></Link>
-                    <Link to="/profile"><span>My Profile</span></Link>
                     <Link to="/inbox"><span>Inbox</span></Link>
-                    <Link to="/cart"><span>Cart <HiShoppingCart size={16} /></span></Link>
+                    <Link to="/profile"><span>My Profile</span></Link>
                 </div>
             </div>
         </div>

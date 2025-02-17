@@ -11,3 +11,17 @@
     margin: 0 auto;
     width: 100%;
 }
+
+.topbar {
+    display: block;
+}
+
+@media screen and (max-width: 960px) {
+    .topbar {
+        display: none;
+    }
+
+    .mainContent {
+        padding-top: calc(2rem + 60px); /* Adjust 60px based on your navbar height */
+    }
+}
