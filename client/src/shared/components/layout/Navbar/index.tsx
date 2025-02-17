@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.css';
 import { IoLocationOutline } from "react-icons/io5";
-import { Menu, X, User, Search, Bookmark } from 'lucide-react';
+import { User, Search, Bookmark } from 'lucide-react';
+import BurgerMenu from '../BurgerMenu';
 
 const Navbar: React.FC = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -90,13 +91,11 @@ const Navbar: React.FC = () => {
                     <Link to="/watchlist" className={styles.iconButton}>
                         <Bookmark size={24} />
                     </Link>
-                    <button 
-                        className={styles.burgerButton}
-                        onClick={toggleMenu}
-                        aria-label="Toggle menu"
-                    >
-                        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                    </button>
+                    <BurgerMenu 
+                        isOpen={isMenuOpen}
+                        onToggle={toggleMenu}
+                        onLinkClick={() => setIsMenuOpen(false)}
+                    />
                 </div>
 
                 {/* Mobile Search Bar */}
@@ -115,17 +114,6 @@ const Navbar: React.FC = () => {
                                 <Link to="/market">Search</Link>
                             </button>
                         </form>
-                    </div>
-                )}
-
-                {/* Mobile Menu */}
-                {isMenuOpen && (
-                    <div className={styles.mobileMenu}>
-                        <div className={styles.links}>
-                            <Link to="/location" onClick={() => setIsMenuOpen(false)}>
-                                <IoLocationOutline size={30} /> Tacoma Campus
-                            </Link>
-                        </div>
                     </div>
                 )}
             </div>
