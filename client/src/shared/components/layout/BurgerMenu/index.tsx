@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { IoLocationOutline } from "react-icons/io5";
 import styles from './burgermenu.module.css';
 
 interface BurgerMenuProps {
@@ -27,10 +26,54 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
 
             {isOpen && (
                 <div className={styles.menu}>
-                    <div className={styles.links}>
-                        <Link to="/location" onClick={onLinkClick}>
-                            <IoLocationOutline size={30} /> Tacoma Campus
+                    <div className={styles.menuButtons}>
+                        <Link 
+                            to="/sell" 
+                            className={styles.menuButton}
+                            onClick={onLinkClick}
+                        >
+                            Sell
                         </Link>
+                        <Link 
+                            to="/signup" 
+                            className={styles.menuButton}
+                            onClick={onLinkClick}
+                        >
+                            Sign Up
+                        </Link>
+                        <Link 
+                            to="/login" 
+                            className={styles.menuButton}
+                            onClick={onLinkClick}
+                        >
+                            Login
+                        </Link>
+                    </div>
+
+                    <div className={styles.menuFooter}>
+                        <div className={styles.footerLinks}>
+                            <Link 
+                                to="/about"
+                                onClick={onLinkClick}
+                            >
+                                About
+                            </Link>
+                            <Link 
+                                to="/help"
+                                onClick={onLinkClick}
+                            >
+                                Help & Contact
+                            </Link>
+                            <Link 
+                                to="/settings"
+                                onClick={onLinkClick}
+                            >
+                                Settings & Accessibility
+                            </Link>
+                        </div>
+                        <div className={styles.copyright}>
+                            © 2024 Tech Startup Club
+                        </div>
                     </div>
                 </div>
             )}

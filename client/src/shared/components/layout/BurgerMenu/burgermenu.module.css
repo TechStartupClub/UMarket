@@ -28,7 +28,6 @@
     padding: 0.75rem;
     padding-top: calc(0.5rem + 60px);
     flex-direction: column;
-    align-items: stretch;
     gap: 1rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     z-index: 50;
@@ -36,21 +35,56 @@
     animation: slideIn 0.3s ease forwards;
 }
 
-.links {
+.menuButtons {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.5rem;
 }
 
-.links a {
-    width: 100%;
-    padding: 0.375rem 0;
-    font-size: 1.1rem;
+.menuButton {
+    padding: 0.75rem 1rem;
     text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 4px;
     color: #555;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+.menuButton:hover {
+    background-color: #e5e5e5;
+}
+
+.menuFooter {
+    margin-top: auto;
+    padding: 1rem 0.5rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.footerLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.footerLinks a {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.footerLinks a:hover {
+    color: #8B5CF6;
+}
+
+.copyright {
+    color: #999;
+    font-size: 0.8rem;
+    text-align: center;
 }
 
 @keyframes slideIn {
