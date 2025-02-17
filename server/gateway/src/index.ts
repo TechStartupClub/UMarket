@@ -8,7 +8,7 @@ import marketRoutes from "./routes/marketRoutes";
 // import msgRoutes from "./routes/msgRoutes";
 
 // Load environment variables from .env file
-dotenv.config()
+dotenv.config({ path: "../../.env" });
 
 // Initialize the express server
 const app = express();
@@ -19,6 +19,12 @@ if (!GATEWAY_PORT) {
 
 // Enable CORS
 app.use(cors());
+
+// debug middleware
+app.use((req: Request, res: Response, next: NextFunction) => {
+    console.log(`Incoming request: ${req.method} ${req.path}`);
+    next();
+});
 
 // Middleware for parsing JSON and URL-encoded data
 app.use(express.json());
@@ -42,5 +48,5 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 // Start the server and listen on the specified port
 app.listen(GATEWAY_PORT, () => {
-    console.log(`Server running on port ${GATEWAY_PORT}`);
+    console.log(`GATEWAY running on port ${GATEWAY_PORT}`);
 });
