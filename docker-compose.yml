@@ -1,0 +1,86 @@
+services:
+  react:
+    build:
+      context: ./
+      dockerfile: client/Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./client/src:/react-app/src
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - VITE_HOST=0.0.0.0 
+  auth-service:
+    build:
+      context: ./
+      dockerfile: ./server/auth-service/Dockerfile
+    ports:
+      - ${AUTH_SERVICE_PORT}:${AUTH_SERVICE_PORT}
+    volumes:
+      - ./server/auth-service:/auth-app
+    env_file:
+      - .env
+    environment:
+      - AUTH_SERVICE_PORT=${AUTH_SERVICE_PORT}
+      - PG_USER=${PG_USER}
+      - PG_DATABASE=${PG_DATABASE}
+      - PG_HOST=${PG_HOST}
+      - PG_PASS=${PG_PASS}
+      - PG_PORT=${PG_PORT}
+  gateway-service:
+    build:
+      context: ./
+      dockerfile: ./server/gateway/Dockerfile
+    ports:
+      - ${GATEWAY_PORT}:${GATEWAY_PORT}
+    volumes:
+      - ./server/gateway:/gateway-app
+    env_file:
+      - .env
+    environment:
+      - GATEWAY_PORT=${GATEWAY_PORT}
+      - MARKET_SERVICE_PORT=${MARKET_SERVICE_PORT}
+      - AUTH_SERVICE_PORT=${AUTH_SERVICE_PORT}
+      - SOCIAL_SERVICE_PORT=${SOCIAL_SERVICE_PORT}
+      
+      - SOCIAL_SERVICE_URL=${SOCIAL_SERVICE_URL}
+      - AUTH_SERVICE_URL=${AUTH_SERVICE_URL}
+      - MARKET_SERVICE_URL=${MARKET_SERVICE_URL}
+    depends_on: 
+      - social-service
+      - auth-service
+      - market-service
+  market-service:
+    build:
+      context: ./
+      dockerfile: ./server/market-service/Dockerfile
+    ports:
+      - ${MARKET_SERVICE_PORT}:${MARKET_SERVICE_PORT}
+    volumes:
+      - ./server/market-service:/market-app
+    env_file:
+      - .env
+    environment:
+      - MARKET_SERVICE_PORT=${MARKET_SERVICE_PORT}
+      - PG_USER=${PG_USER}
+      - PG_DATABASE=${PG_DATABASE}
+      - PG_HOST=${PG_HOST}
+      - PG_PASS=${PG_PASS}
+      - PG_PORT=${PG_PORT}
+  social-service:
+    build:
+      context: ./
+      dockerfile: ./server/social-service/Dockerfile
+    ports:
+      - ${SOCIAL_SERVICE_PORT}:${SOCIAL_SERVICE_PORT}
+    volumes:
+      - ./server/social-service:/social-app
+    env_file:
+      - .env
+    environment:
+      - SOCIAL_SERVICE_PORT=${SOCIAL_SERVICE_PORT}
+      - PG_USER=${PG_USER}
+      - PG_DATABASE=${PG_DATABASE}
+      - PG_HOST=${PG_HOST}
+      - PG_PASS=${PG_PASS}
+      - PG_PORT=${PG_PORT}

@@ -1,0 +1,18 @@
+.mcListings {
+    margin-top: 16px;
+}
+
+.mcListCard a {
+    text-decoration: none;
+    color: black;
+}
+
+.mcListCard .mcCardImage {
+    width: 160px;
+    height: 160px;
+}
+
+.mcListCard p {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
