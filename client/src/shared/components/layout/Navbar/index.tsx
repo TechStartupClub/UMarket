@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import styles from './Navbar.module.css';
 import { IoLocationOutline } from "react-icons/io5";
 import { User, Search, Bookmark } from 'lucide-react';
@@ -11,6 +11,8 @@ const Navbar: React.FC = () => {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
+    const searchRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -18,9 +20,42 @@ const Navbar: React.FC = () => {
             setIsScrolled(scrollPosition > 0);
         };
 
+        const handleResize = () => {
+            if (window.innerWidth > 960 && isSearchOpen) {
+                setIsSearchOpen(false);
+            }
+        };
+
         window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+        window.addEventListener('resize', handleResize);
+        
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [isSearchOpen]);
+
+    // Close search when location changes
+    useEffect(() => {
+        setIsSearchOpen(false);
+    }, [location]);
+
+    // Handle clicks outside the search bar
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+                setIsSearchOpen(false);
+            }
+        };
+
+        if (isSearchOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+        
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isSearchOpen]);
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
@@ -41,9 +76,16 @@ const Navbar: React.FC = () => {
         }
     };
 
-    const toggleSearch = () => {
+    const toggleSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
+        // Prevent the default action (like form submission)
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Always toggle isSearchOpen regardless of current state
         setIsSearchOpen(!isSearchOpen);
+        
         if (!isSearchOpen) {
+            // Only close menu if we're opening search
             setIsMenuOpen(false);
         }
     };
@@ -56,31 +98,49 @@ const Navbar: React.FC = () => {
                 </Link>
 
                 {/* Desktop Menu */}
-                <div className={styles.desktopMenu}>
-                    <form onSubmit={handleSearch} className={styles.searchForm}>
-                        <input 
-                            placeholder="Search The Market" 
-                            className={styles.input} 
-                            type="text"
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                        />
-                        <button type="submit" className={styles.search}>
-                            <Link to="/market">Search</Link>
-                        </button>
-                    </form>
-                    <div className={styles.links}>
-                        <Link to="/location">
-                            <IoLocationOutline size={30} /> Tacoma Campus
-                        </Link>
+                {!isSearchOpen && (
+                    <div className={styles.desktopMenu}>
+                        <form onSubmit={handleSearch} className={styles.searchForm}>
+                            <input 
+                                placeholder="Search The Market" 
+                                className={styles.input} 
+                                type="text"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                            />
+                            <button type="submit" className={styles.search}>
+                                <Link to="/market">Search</Link>
+                            </button>
+                        </form>
+                        <div className={styles.links}>
+                            <Link to="/location">
+                                <IoLocationOutline size={30} /> Tacoma Campus
+                            </Link>
+                        </div>
                     </div>
-                </div>
+                )}
+
+                {/* Mobile Search Bar - Render inline when open */}
+                {isSearchOpen ? (
+                    <div className={styles.mobileSearchInline} ref={searchRef}>
+                        <form onSubmit={handleSearch} className={styles.searchFormMobile}>
+                            <input 
+                                placeholder="Search The Market" 
+                                className={styles.input} 
+                                type="text"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                autoFocus
+                            />
+                        </form>
+                    </div>
+                ) : null}
 
                 {/* Mobile Icons */}
                 <div className={styles.mobileIcons}>
                     <button 
-                        className={styles.iconButton}
-                        onClick={toggleSearch}
+                        className={`${styles.iconButton} ${isSearchOpen ? styles.active : ''}`}
+                        onClick={(e) => toggleSearch(e)}
                         aria-label="Toggle search"
                     >
                         <Search size={24} />
@@ -97,25 +157,6 @@ const Navbar: React.FC = () => {
                         onLinkClick={() => setIsMenuOpen(false)}
                     />
                 </div>
-
-                {/* Mobile Search Bar */}
-                {isSearchOpen && (
-                    <div className={styles.mobileSearch}>
-                        <form onSubmit={handleSearch} className={styles.searchForm}>
-                            <input 
-                                placeholder="Search The Market" 
-                                className={styles.input} 
-                                type="text"
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                                autoFocus
-                            />
-                            <button type="submit" className={styles.search}>
-                                <Link to="/market">Search</Link>
-                            </button>
-                        </form>
-                    </div>
-                )}
             </div>
         </nav>
     );
