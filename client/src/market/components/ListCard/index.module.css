@@ -7,9 +7,12 @@
     color: black;
 }
 
-.mcListCard .mcCardImage {
-    width: 160px;
-    height: 160px;
+.mcListCard .mcCardImage img {
+    width: 240px;
+    height: 240px;
+
+    border-radius: 16px;
+    border: 1px solid gray;
 }
 
 .mcListCard p {

@@ -5,7 +5,12 @@ import ListCard from '../ListCard';
 const ListView: React.FC = (view) => {
     return (
         <div className={Style.mcListings}>
-            <ListCard></ListCard>
+            <ListCard
+                name="TSC Seal"
+                price="999"
+                url="/"
+                img="/src/assets/logos/tsc/Tech%20Startup%20Club%20Logo.png"
+                imgText="TSC Seal"></ListCard>
         </div>
     );
 }
