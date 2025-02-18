@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import styles from './Navbar.module.css';
-import { IoLocationOutline } from "react-icons/io5";
+// Removed location icon import
 import { User, Search, Bookmark } from 'lucide-react';
 import BurgerMenu from '../BurgerMenu';
 
@@ -108,13 +108,10 @@ const Navbar: React.FC = () => {
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                             />
-                            <button type="submit" className={styles.search}>
-                                <Link to="/market">Search</Link>
-                            </button>
                         </form>
-                        <div className={styles.links}>
-                            <Link to="/location">
-                                <IoLocationOutline size={30} /> Tacoma Campus
+                        <div className={styles.search}>
+                            <Link to="/sell">
+                                Sell
                             </Link>
                         </div>
                     </div>

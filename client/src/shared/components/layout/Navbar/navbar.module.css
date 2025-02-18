@@ -65,6 +65,7 @@
     border: none;
     border-radius: 30px;
     padding: 8px 20px;
+    height: 100%;
     line-height: 1;
     display: flex;
     align-items: center;
