@@ -14,7 +14,7 @@ if (!AUTH_SERVICE_URL) {
 authRoutes.use(
     "/",
     createProxyMiddleware({
-        target: "http://localhost:4001",
+        target: AUTH_SERVICE_URL,
         changeOrigin: true,
         // pathRewrite: { "^/auth": "" }, // works without this
     })
