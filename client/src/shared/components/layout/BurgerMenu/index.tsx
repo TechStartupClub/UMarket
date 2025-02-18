@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import styles from './burgermenu.module.css';
+import { Menu, X, ChevronRight, ChevronDown } from 'lucide-react';
+import styles from './Burgermenu.module.css';
 
 interface BurgerMenuProps {
     isOpen: boolean;
@@ -14,8 +14,45 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
     onToggle,
     onLinkClick 
 }) => {
+    const [selectedCampus, setSelectedCampus] = useState<string>('Tacoma');
+    const [isLocationDropdownOpen, setIsLocationDropdownOpen] = useState<boolean>(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
+    
+    const campusOptions = ['Tacoma', 'Seattle', 'Bothell'];
+    
+    // Close dropdown when burger menu is closed
+    useEffect(() => {
+        if (!isOpen) {
+            setIsLocationDropdownOpen(false);
+        }
+    }, [isOpen]);
+    
+    // Handle click outside dropdown
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                dropdownRef.current && 
+                !dropdownRef.current.contains(event.target as Node) &&
+                isLocationDropdownOpen
+            ) {
+                setIsLocationDropdownOpen(false);
+            }
+        };
+        
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isLocationDropdownOpen]);
+    
     const handleLogin = () => {
         window.location.href = "http://localhost:3000/auth/google";
+    };
+    
+    const handleCampusSelect = (campus: string) => {
+        setSelectedCampus(campus);
+        setIsLocationDropdownOpen(false);
+        if (onLinkClick) onLinkClick();
     };
 
     return (
@@ -30,6 +67,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
 
             {isOpen && (
                 <div className={styles.menu}>
+                    {/* Main Action Buttons */}
                     <div className={styles.menuButtons}>
                         <Link 
                             to="/sell" 
@@ -55,6 +93,53 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
                         </button>
                     </div>
 
+                    {/* Location Dropdown */}
+                    <div className={styles.locationDropdownContainer} ref={dropdownRef}>
+                        <button 
+                            className={styles.locationLink}
+                            onClick={() => setIsLocationDropdownOpen(!isLocationDropdownOpen)}
+                        >
+                            <span>{selectedCampus} Campus</span>
+                            <ChevronDown 
+                                size={24} 
+                                className={`${styles.arrowIcon} ${isLocationDropdownOpen ? styles.arrowRotated : ''}`} 
+                            />
+                        </button>
+                        
+                        {isLocationDropdownOpen && (
+                            <div className={styles.dropdownMenu}>
+                                {campusOptions
+                                    .filter(campus => campus !== selectedCampus)
+                                    .map(campus => (
+                                        <button
+                                            key={campus}
+                                            className={styles.dropdownItem}
+                                            onClick={() => handleCampusSelect(campus)}
+                                        >
+                                            {campus} Campus
+                                        </button>
+                                    ))
+                                }
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Service links with east-facing arrows */}
+                    <Link to="/social" 
+                          className={styles.serviceLink}
+                          onClick={onLinkClick}>
+                        <span>Social Feed</span>
+                        <ChevronRight size={24} className={styles.arrowIcon} />
+                    </Link>
+
+                    <Link to="/marketplace" 
+                          className={styles.serviceLink}
+                          onClick={onLinkClick}>
+                        <span>Marketplace</span>
+                        <ChevronRight size={24} className={styles.arrowIcon} />
+                    </Link>
+
+                    {/* Footer Links */}
                     <div className={styles.menuFooter}>
                         <div className={styles.footerLinks}>
                             <Link 
