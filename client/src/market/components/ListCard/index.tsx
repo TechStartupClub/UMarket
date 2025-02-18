@@ -1,16 +1,25 @@
 import React from 'react';
 import Style from './index.module.css';
 
-const ListCard: React.FC = () => {
+interface cardProps {
+    name: string,
+    price: string,
+    url: string,
+    img: string,
+    imgText: string,
+    description?: string
+}
+
+const ListCard: React.FC<cardProps> = ({name, price, url, img, imgText}) => {
     return(
         <div className={Style.mcListCard}>
-            <a href="">
+            <a href={url}>
                 <div className={Style.mcCardImage}>
-                    <img src="" alt="Image description" />
+                    <img src={img} alt={imgText} />
                 </div>
                 <div className={Style.mcCardDescription}>
-                    <p>Item Name</p>
-                    <p>$$$$$</p>
+                    <p>{name}</p>
+                    <p>${price}</p>
                 </div>
             </a>
         </div>
