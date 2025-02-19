@@ -2,12 +2,13 @@ import { Request, Response } from 'express';
 import marketPool from '../config/db';
 
 export const getRecentItems = async (req: Request, res: Response): Promise<void> => {
+    console.log('Incoming request to getRecentItems:', req.query);
 
     try {
-        // Parse the amount query parameter 
+        // Parse the amount query parameter
         const amount = parseInt(req.query.amount as string, 10) || 10; // Default to 10 if not provided
 
-        // Check if the parm 'amount' is a valid number
+        // Check if the param 'amount' is a valid number
         if (amount <= 0 || amount > 100) {
             res.status(400).json({ error: 'Amount must be an integer between 1 and 100' });
             return;
