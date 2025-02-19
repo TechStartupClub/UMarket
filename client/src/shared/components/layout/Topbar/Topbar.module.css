@@ -25,13 +25,21 @@
    text-decoration: none;
 }
 
-/* Remove margin-right override since we're using gap */
-/* .left a:last-child, .right a:last-child {
-   margin-right: 0;
-} */
-
 .left span, .right span {
    display: inline-flex;
    align-items: center;
    gap: 4px; /* Keep this small gap for icon spacing */
+}
+
+/* Add pipe separators between links on the right */
+.right a {
+   position: relative;
+}
+
+.right a:not(:last-child)::after {
+   content: '|';
+   position: absolute;
+   font-weight: 200;
+   right: -12px;
+   color: black;
 }

@@ -7,15 +7,13 @@ const Topbar: React.FC = () => {
         <div className={styles.topbar}>
             <div className={styles.content}>
                 <div className={styles.left}>
-                    <Link to="/profile"><span>Hello {'<insert username>'}!</span></Link>
                     <Link to="/help"><span>Help & Contact</span></Link>
                     <Link to="/about"><span>About</span></Link>
                 </div>
                 <div className={styles.right}>
-                    <Link to="/sell"><span>Sell</span></Link>
                     <Link to="/watchlist"><span>Watchlist</span></Link>
                     <Link to="/inbox"><span>Inbox</span></Link>
-                    <Link to="/profile"><span>My Profile</span></Link>
+                    <Link to="/profile"><span>Hi, {'<insert username>'}</span></Link>
                 </div>
             </div>
         </div>
