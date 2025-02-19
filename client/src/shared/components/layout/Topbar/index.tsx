@@ -1,18 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Topbar.module.css';
+import orange from '../../../../assets/logos/tsc/Orange Pin.png';
 
 const Topbar: React.FC = () => {
     return (
         <div className={styles.topbar}>
             <div className={styles.content}>
                 <div className={styles.left}>
-                    <Link to="/help"><span>Help & Contact</span></Link>
-                    <Link to="/about"><span>About</span></Link>
+                    <a href="https://techstartupclub.netlify.app/" target="_blank" rel="noopener noreferrer">
+                        <span className={styles.clubName}>
+                            <img src={orange} alt="Orange Pin Logo" className={styles.logoImage} />
+                            A Project by Tech Startup Club
+                        </span>
+                    </a>
                 </div>
                 <div className={styles.right}>
-                    <Link to="/watchlist"><span>Watchlist</span></Link>
-                    <Link to="/inbox"><span>Inbox</span></Link>
+                    <Link to="/about"><span>About</span></Link>
+                    <Link to="/help"><span>Help & Contact</span></Link>
                     <Link to="/profile"><span>Hi, {'<insert username>'}</span></Link>
                 </div>
             </div>
