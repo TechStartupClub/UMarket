@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { User } from 'lucide-react';
 import styles from './Topbar.module.css';
 import orange from '../../../../assets/logos/tsc/Orange Pin.png';
 
@@ -18,7 +19,12 @@ const Topbar: React.FC = () => {
                 <div className={styles.right}>
                     <Link to="/about"><span>About</span></Link>
                     <Link to="/help"><span>Help & Contact</span></Link>
-                    <Link to="/profile"><span>Hi, {'<insert username>'}</span></Link>
+                    <Link to="/profile">
+                        <span className={styles.userProfile}>
+                            Hi, {'Jide'}
+                            <User size={20} strokeWidth={1.5} className={styles.userIcon} />
+                        </span>
+                    </Link>
                 </div>
             </div>
         </div>

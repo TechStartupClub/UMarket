@@ -16,7 +16,7 @@
 
 .left, .right {
    display: flex;
-   gap: 20px; /* Replace margin-right with gap for consistent spacing */
+   gap: 26px; /* Replace margin-right with gap for consistent spacing */
    align-items: center;
 }
 
@@ -52,6 +52,6 @@
    content: '|';
    position: absolute;
    font-weight: 300;
-   right: -12px;
+   right: -13px;
    color: black;
 }
