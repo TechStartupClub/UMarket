@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import styles from './Navbar.module.css';
-import { User, Search, Bookmark } from 'lucide-react';
+import { User, Search, Bookmark, Mail, Heart } from 'lucide-react';
 import BurgerMenu from '../BurgerMenu';
 
 const Navbar: React.FC = () => {
@@ -127,11 +127,24 @@ const Navbar: React.FC = () => {
                         aria-label="Toggle search"
                         ref={searchIconRef}
                     >
-                        <Search size={24} />
+                        <Search size={26} strokeWidth={1.5} />
                     </button>
                     <div className={styles.search}>
                         <Link to="/sell">
                             Sell
+                        </Link>
+                    </div>
+                    
+                    {/* New desktop icons */}
+                    <div className={styles.navIconsDesktop}>
+                        <Link to="/messages" className={styles.iconButton} aria-label="Messages">
+                            <Mail size={26} strokeWidth={1.5} />
+                        </Link>
+                        <Link to="/favorites" className={styles.iconButton} aria-label="Likes">
+                            <Heart size={26} strokeWidth={1.5} />
+                        </Link>
+                        <Link to="/watchlist" className={styles.iconButton} aria-label="Watchlist">
+                            <Bookmark size={26} strokeWidth={1.5} />
                         </Link>
                     </div>
                 </div>
@@ -160,13 +173,13 @@ const Navbar: React.FC = () => {
                         aria-label="Toggle search"
                         ref={mobileSearchIconRef}
                     >
-                        <Search size={24} />
+                        <Search size={26} strokeWidth={1.5} />
                     </button>
                     <Link to="/profile" className={styles.iconButton}>
-                        <User size={24} />
+                        <User size={26} strokeWidth={1.5} />
                     </Link>
                     <Link to="/watchlist" className={styles.iconButton}>
-                        <Bookmark size={24} />
+                        <Bookmark size={26} strokeWidth={1.5} />
                     </Link>
                     <BurgerMenu 
                         isOpen={isMenuOpen}

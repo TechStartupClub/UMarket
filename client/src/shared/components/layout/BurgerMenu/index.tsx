@@ -62,7 +62,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
                 onClick={onToggle}
                 aria-label="Toggle menu"
             >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
+                {isOpen ? <X size={26} strokeWidth={1.5} /> : <Menu size={26} strokeWidth={1.5} />}
             </button>
 
             {isOpen && (
