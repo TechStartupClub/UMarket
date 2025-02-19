@@ -1,12 +1,12 @@
 /* Navbar.module.css */
 .navbar {
+    margin-top: 8px;
     padding: 0.5rem 0;
     position: fixed;
     width: 100%;
     background-color: white;
     transition: all 0.3s ease;
     z-index: 10;
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 
     &.scrolled {
         top: 0;
@@ -186,6 +186,10 @@
 
 /* Media Queries for Mobile */
 @media (max-width: 960px) {
+    .navbar {
+        margin-top: 0;
+    }
+
     .desktopRight,
     .navCenter,
     .expandedSearch {

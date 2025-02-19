@@ -2,7 +2,7 @@
    padding: 8px 0;
    color: black;
    font-size: 12px;
-   background-color: white;
+   background-color: #f5f5f5;
 }
 
 .content {
@@ -11,7 +11,7 @@
    display: flex;
    justify-content: space-between;
    align-items: center;
-   padding: 0 35px; /* Added padding for consistent edge spacing */
+   padding: 0 35px;
 }
 
 .left, .right {

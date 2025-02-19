@@ -30,14 +30,14 @@
     height: 60px; /* Navbar height */
     background-color: white;
     z-index: 9; /* Just below navbar's z-index */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 @media screen and (min-width: 961px) {
     /* When topbar is visible, adjust the backdrop position */
     .navbar::before {
         top: 0px;
-        height: 40px; /* Navbar height */
+        height: 48px; /* Navbar height */
     }
 }
 
