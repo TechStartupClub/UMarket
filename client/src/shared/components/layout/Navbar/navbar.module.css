@@ -111,14 +111,12 @@
     background-color: #8B5CF6;
     border: none;
     border-radius: 20px;
-    padding: 8px 16px; /* Tighter horizontal padding */
+    padding: 8px 20px; /* Tighter horizontal padding */
     height: 100%;
     line-height: 1;
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    margin-left: 2px;
-    margin-right: 2px;
 }
 
 .search a {
@@ -131,7 +129,6 @@
     display: flex;
     align-items: center;
     gap: 8px; /* Tighter spacing between icons */
-    margin-left: 8px; /* Reduced margin */
 }
 
 /* Mobile Icons */
