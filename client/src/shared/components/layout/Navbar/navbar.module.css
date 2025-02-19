@@ -6,7 +6,7 @@
     background-color: white;
     transition: all 0.3s ease;
     z-index: 10;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 
     &.scrolled {
         top: 0;
@@ -41,7 +41,7 @@
 .logo {
     font-family: "Newsreader", serif;
     color: #8B5CF6;
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: none;
     font-size: 2rem;
     flex-shrink: 0;
