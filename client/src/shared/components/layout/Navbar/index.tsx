@@ -140,7 +140,7 @@ const Navbar: React.FC = () => {
                         <Link to="/messages" className={styles.iconButton} aria-label="Messages">
                             <Mail size={26} strokeWidth={1.5} />
                         </Link>
-                        <Link to="/favorites" className={styles.iconButton} aria-label="Likes">
+                        <Link to="/likes" className={styles.iconButton} aria-label="Likes">
                             <Heart size={26} strokeWidth={1.5} />
                         </Link>
                         <Link to="/watchlist" className={styles.iconButton} aria-label="Watchlist">

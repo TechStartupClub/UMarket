@@ -20,7 +20,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    padding: 0 35px;
+    padding: 0 30px;
     position: relative;
 }
 
@@ -41,13 +41,13 @@
 .logo {
     font-family: "Newsreader", serif;
     color: #8B5CF6;
-    font-weight: medium;
+    font-weight: 500;
     text-decoration: none;
     font-size: 2rem;
     flex-shrink: 0;
     line-height: 1;
     position: relative;
-    top: -1px;
+    top: 4px;
 }
 
 .logo:hover {
@@ -102,22 +102,23 @@
 /* Desktop Menu */
 .desktopRight {
     display: flex;
-    gap: 16px;
     align-items: center;
     flex-shrink: 0;
+    gap: 10px; /* Tighter spacing between elements */
 }
 
 .search {
     background-color: #8B5CF6;
     border: none;
     border-radius: 20px;
-    padding: 8px 20px;
+    padding: 8px 16px; /* Tighter horizontal padding */
     height: 100%;
     line-height: 1;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
     flex-shrink: 0;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 
 .search a {
@@ -128,15 +129,15 @@
 /* Desktop Icons */
 .navIconsDesktop {
     display: flex;
-    gap: 6px; /* Reduced gap to bring icons closer */
     align-items: center;
-    margin-left: 6px; /* Add a small margin from the sell button */
+    gap: 8px; /* Tighter spacing between icons */
+    margin-left: 8px; /* Reduced margin */
 }
 
 /* Mobile Icons */
 .mobileIcons {
     display: none;
-    gap: 8px;
+    gap: 8px; /* Tighter spacing */
     align-items: center;
 }
 
@@ -147,7 +148,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0.25rem;
+    padding: 0;
     position: relative;
     border-radius: 50%;
     width: 34px;
