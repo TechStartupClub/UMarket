@@ -128,13 +128,12 @@
 .navIconsDesktop {
     display: flex;
     align-items: center;
-    gap: 8px; /* Tighter spacing between icons */
+    gap: 4px;
 }
 
 /* Mobile Icons */
 .mobileIcons {
     display: none;
-    gap: 8px; /* Tighter spacing */
     align-items: center;
 }
 

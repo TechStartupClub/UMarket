@@ -127,7 +127,7 @@ const Navbar: React.FC = () => {
                         aria-label="Toggle search"
                         ref={searchIconRef}
                     >
-                        <Search size={24} strokeWidth={1.5} />
+                        <Search size={22} strokeWidth={1.5} />
                     </button>
                     <div className={styles.search}>
                         <Link to="/sell">
@@ -138,13 +138,13 @@ const Navbar: React.FC = () => {
                     {/* New desktop icons */}
                     <div className={styles.navIconsDesktop}>
                         <Link to="/messages" className={styles.iconButton} aria-label="Messages">
-                            <Mail size={24} strokeWidth={1.5} />
+                            <Mail size={22} strokeWidth={1.5} />
                         </Link>
                         <Link to="/likes" className={styles.iconButton} aria-label="Likes">
-                            <Heart size={24} strokeWidth={1.5} />
+                            <Heart size={22} strokeWidth={1.5} />
                         </Link>
                         <Link to="/watchlist" className={styles.iconButton} aria-label="Watchlist">
-                            <Bookmark size={24} strokeWidth={1.5} />
+                            <Bookmark size={22} strokeWidth={1.5} />
                         </Link>
                     </div>
                 </div>
@@ -173,13 +173,13 @@ const Navbar: React.FC = () => {
                         aria-label="Toggle search"
                         ref={mobileSearchIconRef}
                     >
-                        <Search size={24} strokeWidth={1.5} />
+                        <Search size={22} strokeWidth={1.5} />
                     </button>
                     <Link to="/profile" className={styles.iconButton}>
-                        <User size={24} strokeWidth={1.5} />
+                        <User size={22} strokeWidth={1.5} />
                     </Link>
                     <Link to="/watchlist" className={styles.iconButton}>
-                        <Bookmark size={24} strokeWidth={1.5} />
+                        <Bookmark size={22} strokeWidth={1.5} />
                     </Link>
                     <BurgerMenu 
                         isOpen={isMenuOpen}
