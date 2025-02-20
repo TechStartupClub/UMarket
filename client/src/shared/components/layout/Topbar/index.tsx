@@ -15,7 +15,7 @@ const Topbar: React.FC = () => {
                <div className={styles.right}>
                    <Link to="/sell"><span>Sell</span></Link>
                    <Link to="/watchlist"><span>Watchlist</span></Link>
-                   <Link to="/profile"><span>My Profile</span></Link>
+                   <Link to={'/socialPage'}><span>My Profile</span></Link>
                    <Link to="/inbox"><span>Inbox</span></Link>
                    <Link to="/cart"><span>Cart <HiShoppingCart size={16} /></span></Link>
                </div>
