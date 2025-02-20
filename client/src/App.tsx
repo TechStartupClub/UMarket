@@ -5,6 +5,9 @@ import HomePage from './shared/routes/Home';
 import MarketPage from './market/routes/Home';
 import AboutPage from './shared/routes/About';
         
+import ProfilePage from './shared/routes/user management/Profile';
+
+
 const App: React.FC = () => {
    return (
        <Router>
@@ -13,6 +16,7 @@ const App: React.FC = () => {
                    <Route path="/" element={<HomePage />} />
                    <Route path="/market" element={<MarketPage />} />
                    <Route path="/about" element={<AboutPage />} />
+                   <Route path="/profile" element={<ProfilePage />} />
                </Routes>
            </PageLayout>
        </Router>

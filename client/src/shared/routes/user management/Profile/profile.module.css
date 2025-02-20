@@ -1,0 +1,132 @@
+/* General Styles */
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 12000px;
+  padding: 20px;
+}
+
+.profileCard {
+  background-color: #f7f2ff; /* Light purple background */
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  width: 90%; /* Make it take almost the full width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto; /* Centers the box */
+}
+
+.profileDetails {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Spread elements across */
+  width: 100%; /* Make sure it spans full width */
+}
+
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.info {
+  flex: 1;
+}
+
+.bio {
+  color: #666;
+  margin: 10px 0;
+}
+
+.stats {
+  display: flex;
+  gap: 20px;
+  margin: 10px 0;
+}
+
+.rating {
+  display: flex;
+  gap: 5px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+}
+
+.followButton {
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.messageButton {
+  background-color: transparent;
+  color: #6c63ff;
+  border: 1px solid #6c63ff;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Compliments Section */
+.complimentsSection {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.complimentsTags {
+  display: flex;
+  gap: 10px;
+}
+
+.complimentsTags span {
+  background-color: #e7d6ff;
+  padding: 5px 10px;
+  border-radius: 12px;
+  color: #6c63ff;
+}
+
+/* Postings Section */
+.postingsSection {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.postingsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.postingsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.postingCard {
+  text-align: center;
+}
+
+.postingImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+}
