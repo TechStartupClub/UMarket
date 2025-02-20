@@ -14,13 +14,13 @@
 }
 
 .container {
-    max-width: 1440px;
+    max-width: 2160px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    padding: 0 30px;
+    padding: 0 3rem;
     position: relative;
 }
 
@@ -28,6 +28,7 @@
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    gap: 12px; /* Add gap for search icon */
 }
 
 .navCenter {
@@ -36,6 +37,70 @@
     align-items: center;
     justify-content: flex-start;
     position: relative;
+}
+
+/* Search button specific styles */
+.searchButton {
+    color: #555;
+}
+
+.searchButton.active {
+    color: #8B5CF6;
+}
+
+/* Center Nav Icons */
+.centerNavIcons {
+    display: none; /* Hidden by default */
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    justify-content: center;
+    gap: 48px;
+    align-items: center;
+    z-index: 4; /* Lower z-index to appear behind search */
+    pointer-events: none; /* Allow clicks to pass through the container */
+}
+
+.centerIconButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    color: #555;
+    transition: all 0.2s ease;
+    pointer-events: auto; /* Re-enable pointer events for the buttons */
+}
+
+.centerIconButton:hover {
+    background-color: #F5F5F5;
+    color: #8B5CF6;
+}
+
+/* Active state for center icons */
+.centerIconButton.active {
+    color: #8B5CF6;
+}
+
+.centerIconButton.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 2px;
+    background-color: #8B5CF6;
+    border-radius: 1px;
 }
 
 .logo {
@@ -104,14 +169,15 @@
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    gap: 10px; /* Tighter spacing between elements */
+    gap: 10px;
 }
 
-.search {
+/* Renamed from .search to .sellButton */
+.sellButton {
     background-color: #8B5CF6;
     border: none;
     border-radius: 20px;
-    padding: 8px 20px; /* Tighter horizontal padding */
+    padding: 8px 20px;
     height: 100%;
     line-height: 1;
     display: flex;
@@ -119,7 +185,7 @@
     flex-shrink: 0;
 }
 
-.search a {
+.sellButton a {
     color: white;
     font-size: 1.1rem;
 }
@@ -129,6 +195,7 @@
     display: flex;
     align-items: center;
     gap: 4px;
+    margin-right: -5px;
 }
 
 /* Mobile Icons */
@@ -182,6 +249,11 @@
     .mobileIcons {
         display: none;
     }
+    
+    /* Show center icons only on desktop */
+    .centerNavIcons {
+        display: flex;
+    }
 }
 
 /* Media Queries for Mobile */
@@ -190,9 +262,17 @@
         margin-top: 0;
     }
 
+    .container {
+        padding: 0 1rem;
+    }
+
     .desktopRight,
     .navCenter,
     .expandedSearch {
+        display: none;
+    }
+
+    .navLeft .searchButton {
         display: none;
     }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import styles from './Navbar.module.css';
-import { User, Search, Bookmark, Mail, Heart } from 'lucide-react';
+import { User, Search, Bookmark, Mail, Heart, Users, ShoppingBag, Home } from 'lucide-react';
 import BurgerMenu from '../BurgerMenu';
 
 const Navbar: React.FC = () => {
@@ -15,6 +15,14 @@ const Navbar: React.FC = () => {
     const desktopSearchRef = useRef<HTMLDivElement>(null);
     const searchIconRef = useRef<HTMLButtonElement>(null);
     const mobileSearchIconRef = useRef<HTMLButtonElement>(null);
+
+    // Check if a path is active (exact match or starts with for nested routes)
+    const isPathActive = (path: string) => {
+        if (path === '/') {
+            return location.pathname === '/';
+        }
+        return location.pathname.startsWith(path);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -99,9 +107,43 @@ const Navbar: React.FC = () => {
                     <Link to="/" className={styles.logo}>
                         UMarket
                     </Link>
+                    {/* Search icon moved to left side */}
+                    <button 
+                        className={`${styles.iconButton} ${styles.searchButton} ${isSearchOpen ? styles.active : ''}`}
+                        onClick={(e) => toggleSearch(e)}
+                        aria-label="Toggle search"
+                        ref={searchIconRef}
+                    >
+                        <Search size={26} strokeWidth={1.5} />
+                    </button>
                 </div>
 
-                {/* Desktop Search - now on the right side like mobile */}
+                {/* Center Nav Icons */}
+                <div className={styles.centerNavIcons}>
+                    <Link 
+                        to="/" 
+                        className={`${styles.centerIconButton} ${isPathActive('/') ? styles.active : ''}`} 
+                        title="Home"
+                    >
+                        <Home size={26} strokeWidth={1.5} />
+                    </Link>
+                    <Link 
+                        to="/social" 
+                        className={`${styles.centerIconButton} ${isPathActive('/social') ? styles.active : ''}`} 
+                        title="Social Feed"
+                    >
+                        <Users size={26} strokeWidth={1.5} />
+                    </Link>
+                    <Link 
+                        to="/market" 
+                        className={`${styles.centerIconButton} ${isPathActive('/market') ? styles.active : ''}`} 
+                        title="Marketplace"
+                    >
+                        <ShoppingBag size={26} strokeWidth={1.5} />
+                    </Link>
+                </div>
+
+                {/* Desktop Search */}
                 <div className={styles.navCenter}>
                     {isSearchOpen && (
                         <div className={styles.expandedSearch} ref={desktopSearchRef}>
@@ -121,30 +163,34 @@ const Navbar: React.FC = () => {
 
                 {/* Desktop Menu */}
                 <div className={styles.desktopRight}>
-                    <button 
-                        className={`${styles.iconButton}`}
-                        onClick={(e) => toggleSearch(e)}
-                        aria-label="Toggle search"
-                        ref={searchIconRef}
-                    >
-                        <Search size={22} strokeWidth={1.5} />
-                    </button>
-                    <div className={styles.search}>
+                    <div className={styles.sellButton}>
                         <Link to="/sell">
                             Sell
                         </Link>
                     </div>
                     
-                    {/* New desktop icons */}
+                    {/* Desktop icons */}
                     <div className={styles.navIconsDesktop}>
-                        <Link to="/messages" className={styles.iconButton} aria-label="Messages">
-                            <Mail size={22} strokeWidth={1.5} />
+                        <Link 
+                            to="/messages" 
+                            className={`${styles.iconButton} ${isPathActive('/messages') ? styles.active : ''}`}
+                            aria-label="Messages"
+                        >
+                            <Mail size={26} strokeWidth={1.5} />
                         </Link>
-                        <Link to="/likes" className={styles.iconButton} aria-label="Likes">
-                            <Heart size={22} strokeWidth={1.5} />
+                        <Link 
+                            to="/favorites"
+                            className={`${styles.iconButton} ${isPathActive('/favorites') ? styles.active : ''}`} 
+                            aria-label="Likes"
+                        >
+                            <Heart size={26} strokeWidth={1.5} />
                         </Link>
-                        <Link to="/watchlist" className={styles.iconButton} aria-label="Watchlist">
-                            <Bookmark size={22} strokeWidth={1.5} />
+                        <Link 
+                            to="/watchlist" 
+                            className={`${styles.iconButton} ${isPathActive('/watchlist') ? styles.active : ''}`}
+                            aria-label="Watchlist"
+                        >
+                            <Bookmark size={26} strokeWidth={1.5} />
                         </Link>
                     </div>
                 </div>
@@ -173,13 +219,19 @@ const Navbar: React.FC = () => {
                         aria-label="Toggle search"
                         ref={mobileSearchIconRef}
                     >
-                        <Search size={22} strokeWidth={1.5} />
+                        <Search size={26} strokeWidth={1.5} />
                     </button>
-                    <Link to="/profile" className={styles.iconButton}>
-                        <User size={22} strokeWidth={1.5} />
+                    <Link 
+                        to="/profile" 
+                        className={`${styles.iconButton} ${isPathActive('/profile') ? styles.active : ''}`}
+                    >
+                        <User size={26} strokeWidth={1.5} />
                     </Link>
-                    <Link to="/watchlist" className={styles.iconButton}>
-                        <Bookmark size={22} strokeWidth={1.5} />
+                    <Link 
+                        to="/watchlist" 
+                        className={`${styles.iconButton} ${isPathActive('/watchlist') ? styles.active : ''}`}
+                    >
+                        <Bookmark size={26} strokeWidth={1.5} />
                     </Link>
                     <BurgerMenu 
                         isOpen={isMenuOpen}
