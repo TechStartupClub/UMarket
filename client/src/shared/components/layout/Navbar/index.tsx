@@ -9,12 +9,14 @@ const Navbar: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const navigate = useNavigate();
     const location = useLocation();
     const mobileSearchRef = useRef<HTMLDivElement>(null);
     const desktopSearchRef = useRef<HTMLDivElement>(null);
     const searchIconRef = useRef<HTMLButtonElement>(null);
     const mobileSearchIconRef = useRef<HTMLButtonElement>(null);
+    const miniSearchRef = useRef<HTMLDivElement>(null);
 
     // Check if a path is active (exact match or starts with for nested routes)
     const isPathActive = (path: string) => {
@@ -37,6 +39,18 @@ const Navbar: React.FC = () => {
         };
     }, []);
 
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+        
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     // Close search when location changes
     useEffect(() => {
         setIsSearchOpen(false);
@@ -52,12 +66,14 @@ const Navbar: React.FC = () => {
             const isClickInsideMobileSearch = mobileSearchRef.current?.contains(target);
             const isClickOnDesktopIcon = searchIconRef.current?.contains(target);
             const isClickOnMobileIcon = mobileSearchIconRef.current?.contains(target);
+            const isClickInsideMiniSearch = miniSearchRef.current?.contains(target);
             
             // Only close if clicked outside all search-related elements
             if (!isClickInsideDesktopSearch && 
                 !isClickInsideMobileSearch && 
                 !isClickOnDesktopIcon && 
-                !isClickOnMobileIcon) {
+                !isClickOnMobileIcon &&
+                !isClickInsideMiniSearch) {
                 setIsSearchOpen(false);
             }
         };
@@ -100,6 +116,8 @@ const Navbar: React.FC = () => {
         }
     };
 
+    const isLargeScreen = windowWidth >= 1080;
+
     return (
         <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''}`}>
             <div className={styles.container}>
@@ -107,7 +125,7 @@ const Navbar: React.FC = () => {
                     <Link to="/" className={styles.logo}>
                         UMarket
                     </Link>
-                    {/* Search icon moved to left side */}
+                    {/* Regular search button */}
                     <button 
                         className={`${styles.iconButton} ${styles.searchButton} ${isSearchOpen ? styles.active : ''}`}
                         onClick={(e) => toggleSearch(e)}
@@ -116,6 +134,33 @@ const Navbar: React.FC = () => {
                     >
                         <Search size={26} strokeWidth={1.5} />
                     </button>
+                    
+                    {/* Mini search bar (shown on larger screens) */}
+                    <div 
+                        className={`${styles.miniSearchBar} ${isSearchOpen ? styles.hidden : ''}`}
+                        ref={miniSearchRef}
+                        onClick={() => {
+                            setIsSearchOpen(true);
+                            setIsMenuOpen(false);
+                        }}
+                    >
+                        <button 
+                            className={styles.miniSearchButton}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setIsSearchOpen(true);
+                                setIsMenuOpen(false);
+                            }}
+                            aria-label="Expand search"
+                        >
+                            <Search size={18} strokeWidth={1.5} />
+                        </button>
+                        <input
+                            type="text"
+                            placeholder="Search The Market"
+                            readOnly
+                        />
+                    </div>
                 </div>
 
                 {/* Center Nav Icons */}
@@ -146,7 +191,10 @@ const Navbar: React.FC = () => {
                 {/* Desktop Search */}
                 <div className={styles.navCenter}>
                     {isSearchOpen && (
-                        <div className={styles.expandedSearch} ref={desktopSearchRef}>
+                        <div 
+                            className={`${styles.expandedSearch} ${isLargeScreen ? styles.isLargeScreen : ''}`} 
+                            ref={desktopSearchRef}
+                        >
                             <form onSubmit={handleSearch}>
                                 <input 
                                     placeholder="Search The Market" 
