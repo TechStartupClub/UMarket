@@ -205,6 +205,26 @@
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
+.iconButton {
+    /* margin: 0 0.5rem 0.25rem 0.5rem; */
+    margin-top: 2rem;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #555;
+    transition: all 0.2s ease;
+}
+
+
+.iconButton:hover, .burgerButton:hover {
+    color: #8B5CF6;
+}
+
+.iconButton.active {
+    color: #8B5CF6;
+}
+
 .menuFooter {
     margin-top: auto;
     padding: 1rem 0.5rem;

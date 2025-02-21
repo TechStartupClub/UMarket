@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, ChevronRight, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronRight, ChevronDown, Heart } from 'lucide-react';
 import styles from './Burgermenu.module.css';
 
 interface BurgerMenuProps {
@@ -8,6 +8,13 @@ interface BurgerMenuProps {
     onToggle: () => void;
     onLinkClick?: () => void;
 }
+
+const isPathActive = (path: string) => {
+    if (path === '/') {
+        return location.pathname === '/';
+    }
+    return location.pathname.startsWith(path);
+};
 
 const BurgerMenu: React.FC<BurgerMenuProps> = ({ 
     isOpen, 
@@ -139,6 +146,17 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
                         <ChevronRight size={24} className={styles.arrowIcon} />
                     </Link>
 
+                    {/* Page Links */}
+                    <div className={styles.serviceLink}>
+                        <Link 
+                            to="/favorites"
+                            className={`${styles.iconButton} ${isPathActive('/favorites') ? styles.active : ''}`} 
+                            aria-label="Likes"
+                        >
+                            <Heart size={20} strokeWidth={2} /><span>Favorites</span>
+                        </Link>
+                    </div>
+
                     {/* Footer Links */}
                     <div className={styles.menuFooter}>
                         <div className={styles.footerLinks}>
@@ -149,7 +167,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
                                 About
                             </Link>
                             <Link 
-                                to="/help"
+                                to="/contact"
                                 onClick={onLinkClick}
                             >
                                 Help & Contact
