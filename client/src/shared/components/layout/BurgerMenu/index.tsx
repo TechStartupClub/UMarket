@@ -152,7 +152,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
                         <ChevronRight size={24} className={styles.arrowIcon} />
                     </Link>
 
-                    <Link to="/marketplace" 
+                    <Link to="/market" 
                           className={styles.serviceLink}
                           onClick={onLinkClick}>
                         <span>Marketplace</span>
