@@ -1,33 +1,58 @@
 .topbar {
-    padding-top: 15px;
-    color: black;
-    font-size: 12px;
- }
- 
- .content {
-    max-width: 1440px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
- }
- 
- .left, .right {
-    display: flex;
- }
- 
- .left a, .right a {
-    margin-right: 75px;
-    color: black;
-    text-decoration: none;
- }
- 
- .left a:last-child, .right a:last-child {
-    margin-right: 0;
- }
- 
- .left span, .right span {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
- }
+   padding: 8px 0;
+   color: black;
+   font-size: 12px;
+   background-color: #f5f5f5;
+   width: 100%;
+}
+
+.content {
+   max-width: 2160px;
+   margin: 0 auto;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0 3rem;
+}
+
+.left, .right {
+   display: flex;
+   gap: 26px; /* Replace margin-right with gap for consistent spacing */
+   align-items: center;
+}
+
+.left a, .right a {
+   color: black;
+   text-decoration: none;
+}
+
+.left span, .right span {
+   display: inline-flex;
+   align-items: center;
+   gap: 4px; /* Keep this small gap for icon spacing */
+}
+
+/* Logo styling */
+.logoImage {
+   width: 20px;
+   height: 20px;
+   margin-right: 6px;
+   vertical-align: middle;
+}
+
+.clubName {
+   font-weight: 500;
+}
+
+/* Add pipe separators between links on the right */
+.right a {
+   position: relative;
+}
+
+.right a:not(:last-child)::after {
+   content: '|';
+   position: absolute;
+   font-weight: 300;
+   right: -13px;
+   color: black;
+}
