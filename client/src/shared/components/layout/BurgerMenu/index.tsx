@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, ChevronRight, ChevronDown, Heart } from 'lucide-react';
+import { Menu, X, ChevronRight, ChevronDown, Heart, Mail, Bookmark, User } from 'lucide-react';
 import styles from './Burgermenu.module.css';
 
 interface BurgerMenuProps {
@@ -74,6 +74,19 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
 
             {isOpen && (
                 <div className={styles.menu}>
+                    {/* User Greeting */}
+                    <Link 
+                        to="/profile" 
+                        className={styles.userGreeting}
+                        onClick={onLinkClick}
+                    >
+                        <div className={styles.userAvatar}>
+                            <User size={20} strokeWidth={2} />
+                        </div>
+                        <span className={styles.userName}>Hi, Jide</span>
+                        <ChevronRight size={20} className={styles.profileChevron} />
+                    </Link>
+
                     {/* Main Action Buttons */}
                     <div className={styles.menuButtons}>
                         <Link 
@@ -146,14 +159,31 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
                         <ChevronRight size={24} className={styles.arrowIcon} />
                     </Link>
 
-                    {/* Page Links */}
-                    <div className={styles.serviceLink}>
+                    {/* Middle Links - new section */}
+                    <div className={styles.middleLinks}>
+                        <Link 
+                            to="/messages"
+                            className={`${styles.middleLink} ${isPathActive('/messages') ? styles.active : ''}`} 
+                            onClick={onLinkClick}
+                        >
+                            <Mail size={20} strokeWidth={2} />
+                            <span>Messages</span>
+                        </Link>
                         <Link 
                             to="/favorites"
-                            className={`${styles.iconButton} ${isPathActive('/favorites') ? styles.active : ''}`} 
-                            aria-label="Likes"
+                            className={`${styles.middleLink} ${isPathActive('/favorites') ? styles.active : ''}`} 
+                            onClick={onLinkClick}
                         >
-                            <Heart size={20} strokeWidth={2} /><span>Favorites</span>
+                            <Heart size={20} strokeWidth={2} />
+                            <span>Favorites</span>
+                        </Link>
+                        <Link 
+                            to="/watchlist"
+                            className={`${styles.middleLink} ${isPathActive('/watchlist') ? styles.active : ''}`} 
+                            onClick={onLinkClick}
+                        >
+                            <Bookmark size={20} strokeWidth={2} />
+                            <span>Watchlist</span>
                         </Link>
                     </div>
 
