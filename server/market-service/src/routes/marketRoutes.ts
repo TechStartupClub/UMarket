@@ -5,6 +5,6 @@ import { getRecentItems } from '../controllers/marketControllers'; // Import the
 const router = express.Router();
 
 // ../recent?amount=00 is the query parameter that will be passed to the controller
-router.get("/recent", getRecentItems);
+router.get("/items/recent", getRecentItems);
 
 export default router;
