@@ -32,6 +32,11 @@ const Headers: React.FC = () => {
                         <div><button>Most Popular</button></div>
                     </div>
 
+                    <div className={Style.mhMiniNav}>
+                        <button>Sidebar placeholder</button>
+                        <button>Price range placeholder</button>
+                    </div>
+
                     <div className={Style.mhFilters}>
                         <div className={Style.mhfPriceRange}>
                             <div>Price Range</div>

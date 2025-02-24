@@ -5,8 +5,9 @@ body {
 }
 
 main {
-    margin-left: 15%;
-    margin-right: 15%;
+    /*margin-left: 10%;
+    margin-right: 10%;*/
+    margin-top: 48px;
 }
 
 /* Headers */
@@ -51,6 +52,10 @@ main {
     font-weight: 600;
 }
 
+.mhMiniNav {
+    display: none;
+}
+
 .mhFilters {
     display: flex;
     gap: 24px;
@@ -75,4 +80,21 @@ main {
 .marketContent {
     display: flex;
     gap: 24px;
+}
+
+@media screen and (max-width: 960px) {
+    main {
+        margin-top: 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .marketHeaderB {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .mhMiniNav {
+        display: initial;
+    }
 }
