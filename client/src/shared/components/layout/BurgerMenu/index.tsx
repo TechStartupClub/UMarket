@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, ChevronRight, ChevronDown, Heart, Mail, Bookmark, User } from 'lucide-react';
+import axios from 'axios';
 import styles from './Burgermenu.module.css';
 
 interface BurgerMenuProps {
@@ -23,6 +24,8 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
 }) => {
     const [selectedCampus, setSelectedCampus] = useState<string>('Tacoma');
     const [isLocationDropdownOpen, setIsLocationDropdownOpen] = useState<boolean>(false);
+    const [userName, setUserName] = useState<string>('Guest');
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     const dropdownRef = useRef<HTMLDivElement>(null);
     
     const campusOptions = ['Tacoma', 'Seattle', 'Bothell'];
@@ -31,6 +34,38 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
     useEffect(() => {
         if (!isOpen) {
             setIsLocationDropdownOpen(false);
+        }
+    }, [isOpen]);
+    
+    // Fetch user profile when menu is opened
+    useEffect(() => {
+        if (isOpen) {
+            const fetchUserProfile = async () => {
+                try {
+                    setIsLoading(true);
+                    // Replace with your actual API endpoint
+                    const response = await axios.get('/api/user/profile');
+                    
+                    // Assuming the API returns an object with a name property
+                    if (response.data && response.data.name) {
+                        // Just get the first name
+                        setUserName(response.data.name.split(' ')[0]);
+                    }
+                } catch (err) {
+                    console.error('Error fetching user profile:', err);
+                    // Keep the default value if there's an error
+                } finally {
+                    setIsLoading(false);
+                }
+            };
+    
+            // Check if user is logged in before making the API call
+            const token = localStorage.getItem('authToken');
+            if (token) {
+                fetchUserProfile();
+            } else {
+                setIsLoading(false);
+            }
         }
     }, [isOpen]);
     
@@ -83,7 +118,13 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
                         <div className={styles.userAvatar}>
                             <User size={20} strokeWidth={2} />
                         </div>
-                        <span className={styles.userName}>Hi, Jide</span>
+                        <span className={styles.userName}>
+                            {isLoading ? (
+                                <span className={styles.loadingName}>Loading...</span>
+                            ) : (
+                                <>Hi, {userName}</>
+                            )}
+                        </span>
                         <ChevronRight size={20} className={styles.profileChevron} />
                     </Link>
 
