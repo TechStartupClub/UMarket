@@ -1,8 +1,10 @@
 import express from 'express';
-import { getRecentItems } from '../controllers/marketControllers';
+import { getRecentItems } from '../controllers/marketControllers'; // Import the controller function
 
+// Create a new router
 const router = express.Router();
 
-router.get('/items/recent', getRecentItems);
+// ../recent?amount=00 is the query parameter that will be passed to the controller
+router.get("/items/recent", getRecentItems);
 
 export default router;
