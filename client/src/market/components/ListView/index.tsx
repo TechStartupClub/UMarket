@@ -8,7 +8,7 @@ const ListView: React.FC = (view) => {
             <ListCard
                 name="TSC Seal"
                 price="999"
-                url="/"
+                url="/item"
                 img="/src/assets/logos/tsc/Tech%20Startup%20Club%20Logo.png"
                 imgText="TSC Seal"></ListCard>
         </div>
