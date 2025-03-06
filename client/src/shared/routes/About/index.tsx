@@ -159,7 +159,7 @@ const clubMembers = [
 ]
 
 
-function index() {
+function about() {
   return (
     <div className={style.pageContainer}>
         <div className={style.heroBanner} style={{ backgroundImage: `url(${aboutHeader})` }}>
@@ -230,4 +230,4 @@ function index() {
   )
 }
 
-export default index
+export default about
