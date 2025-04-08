@@ -1,64 +1,113 @@
 .footer {
-    background: linear-gradient(135deg, #fcc765 0%, #ffa41b 100%);
-    padding: 4rem 6rem 2rem;
- }
- 
- .container {
-    max-width: 1440px;
-    margin: 0 auto;
-    font-weight: bold;
- }
- 
- .mainContent {
-    display: flex;
-    flex-direction: row;
-    gap: 4rem;
-    margin-bottom: 4rem;
-    align-items: center;
- }
- 
- .logo {
-    width: 180px;
-    height: auto;
- }
- 
- .linkGroup {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
- }
- 
- .createdBy {
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
- }
- 
- .links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
- }
- 
- .links a {
-    text-decoration: none;
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    font-weight: bold;
- }
- 
- .legalSection {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.875rem;
- }
- 
- .legalLinks {
-    display: flex;
-    gap: 2rem;
- }
- 
- .legalLinks a {
-    text-decoration: none;
- }
+   background: linear-gradient(135deg, #fcc765 0%, #ffa41b 100%);
+   padding: 2rem;
+}
+
+.container {
+   max-width: 1440px;
+   margin: 0 auto;
+   font-weight: bold;
+   padding: 0 1rem;
+}
+
+.mainContent {
+   display: flex;
+   flex-direction: row;
+   gap: 2rem;
+   margin-bottom: 2rem;
+   align-items: flex-start;
+   flex-wrap: wrap;
+}
+
+.logo {
+   width: 140px;
+   height: auto;
+}
+
+.linkGroup {
+   display: flex;
+   flex-direction: column;
+   gap: 0.75rem;
+   min-width: 200px;
+   flex: 1;
+}
+
+.createdBy {
+   font-size: 0.875rem;
+   text-transform: uppercase;
+   margin-bottom: 1rem;
+}
+
+.links {
+   display: flex;
+   flex-direction: column;
+   gap: 0.75rem;
+}
+
+.links a {
+   text-decoration: none;
+   font-size: 0.875rem;
+   text-transform: uppercase;
+   font-weight: bold;
+}
+
+.legalSection {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   font-size: 0.875rem;
+   flex-wrap: wrap;
+   gap: 1rem;
+}
+
+.legalLinks {
+   display: flex;
+   gap: 1.5rem;
+   flex-wrap: wrap;
+}
+
+.legalLinks a {
+   text-decoration: none;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+   .footer {
+       padding: 2rem 1rem;
+   }
+
+   .mainContent {
+       flex-direction: column;
+       align-items: center;
+       text-align: center;
+       gap: 2rem;
+   }
+
+   .linkGroup {
+       width: 100%;
+       align-items: center;
+   }
+
+   .legalSection {
+       flex-direction: column;
+       text-align: center;
+       gap: 1.5rem;
+   }
+
+   .legalLinks {
+       justify-content: center;
+       gap: 1rem;
+   }
+}
+
+@media screen and (max-width: 480px) {
+   .logo {
+       width: 120px;
+   }
+
+   .legalLinks {
+       flex-direction: column;
+       align-items: center;
+       gap: 1rem;
+   }
+}

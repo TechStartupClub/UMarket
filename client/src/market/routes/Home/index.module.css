@@ -1,0 +1,78 @@
+/* Page Styling */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+/* Headers */
+.marketHeaderA h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 12px;
+}
+
+.marketHeaderB {
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    justify-content: space-between;
+}
+
+.marketHeaderB .mhTabs {
+    display: flex;
+    gap: 48px;
+}
+
+.marketHeaderB .mhTabs button {
+    border: none;
+    background-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.marketHeaderB .mhTabs button:hover {
+    cursor: pointer;
+}
+
+.marketHeaderB .mhTabs div {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.marketHeaderB .mhTabs .tabActive {
+    font-weight: 600;
+    border-bottom: 2px solid #8f8f8f;
+}
+
+.marketHeaderB .mhTabs .tabActive button {
+    font-weight: 600;
+}
+
+.mhFilters {
+    display: flex;
+    gap: 24px;
+    font-weight: 600;
+}
+
+.mhfPriceRange {
+    display: flex;
+    gap: 8px;
+}
+
+.mhFilters .filterTxt{
+    margin-top: 1px;
+    width: 2em;
+    height: 1.6em;
+    background-color: #ebebeb;
+    border-radius: 4px;
+    border: 1px solid rgb(205, 205, 205);
+}
+
+/* Main Content */
+.marketContent {
+    display: flex;
+    gap: 24px;
+}

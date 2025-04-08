@@ -1,0 +1,318 @@
+/* Reset for menu text elements only - preserving other styles */
+.menu button,
+.menu a {
+    font-weight: normal;
+    font-family: inherit;
+}
+
+.burgerButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    position: relative;
+    z-index: 51;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.burgerButton:hover {
+    background-color: #F5F5F5;
+}
+
+.menu {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 325px;
+    height: 100vh;
+    background-color: white;
+    padding: 0.75rem;
+    padding-top: calc(0.5rem + 60px);
+    flex-direction: column;
+    gap: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+    overflow-y: auto;
+    animation: slideIn 0.3s ease forwards;
+}
+
+/* User greeting */
+.userGreeting {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0.75rem 0.5rem;
+    margin: 0 0.5rem 1rem 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.userGreeting:hover {
+    background-color: #f5f5f5;
+}
+
+.userGreeting:hover .profileChevron {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.userGreeting .userName {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.userAvatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.profileChevron {
+    position: absolute;
+    right: 10px;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: all 0.2s ease;
+}
+
+.menuButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.menuButton {
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    color: #555;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+.menuButton:hover {
+    background-color: #e5e5e5;
+}
+
+/* Special style for the Sell button */
+.menuButton[href="/sell"] {
+    background-color: #8B5CF6;
+    color: white;
+}
+
+.menuButton[href="/sell"]:hover {
+    background-color: #7c4ddd;
+}
+
+.googleButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    color: #555;
+    border: 1px solid #ddd;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.googleButton:hover {
+    background-color: #f8f8f8;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.googleIcon {
+    width: 18px;
+    height: 18px;
+}
+
+/* Location Link Style with arrow */
+.locationLink {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0;
+    font-size: 1.25rem;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+.locationLink:hover {
+    background-color: #f5f5f5;
+}
+
+/* Dropdown container */
+.locationDropdownContainer {
+    position: relative;
+    margin: 0 0.5rem 0.25rem 0.5rem;
+}
+
+/* Dropdown menu */
+.dropdownMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: 52;
+    margin-top: 0.25rem;
+    animation: fadeIn 0.2s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dropdown items */
+.dropdownItem {
+    display: block;
+    width: 100%;
+    padding: 0.85rem 1.25rem;
+    font-size: 1.25rem;
+    font-weight: normal;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.dropdownItem:hover {
+    background-color: #f5f5f5;
+}
+
+/* Arrow rotation when dropdown is open */
+.arrowRotated {
+    transform: rotate(180deg);
+    opacity: 1 !important;
+}
+
+/* Service Link Style with arrow */
+.serviceLink {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    margin: 0 0.5rem 0.25rem 0.5rem;
+    font-size: 1.25rem;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.serviceLink:hover {
+    background-color: #f5f5f5;
+}
+
+/* Arrow icon style */
+.arrowIcon {
+    flex-shrink: 0;
+    opacity: 1;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Middle Links - new section */
+.middleLinks {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.middleLink {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    width: 100%;
+    padding: 0.5rem;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.middleLink:hover {
+    background-color: #f5f5f5;
+    color: #8B5CF6;
+}
+
+.middleLink.active {
+    color: #8B5CF6;
+}
+
+.menuFooter {
+    margin-top: auto;
+    padding: 1rem 0.5rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.footerLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.footerLinks a {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.footerLinks a:hover {
+    color: #8B5CF6;
+}
+
+.copyright {
+    color: #999;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}

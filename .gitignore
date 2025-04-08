@@ -19,6 +19,3 @@ Thumbs.db
 
 # Log files
 *.log
-
-# npm package lock file
-package-lock.json

@@ -15,9 +15,15 @@ const PageLayout: React.FC<PageLayoutProps> = ({
 }) => {
     return (
         <div className={styles.layoutContainer}>
-            <Topbar />
-            <Navbar />
-            {children}
+            <div className={styles.topbar}>
+                <Topbar />
+            </div>
+            <div className={styles.navbar}>
+                <Navbar />
+            </div>
+            <main className={styles.mainContent}>
+                {children}
+            </main>
             {showFooter && <Footer />}
         </div>
     );

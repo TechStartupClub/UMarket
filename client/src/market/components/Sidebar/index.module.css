@@ -1,0 +1,25 @@
+/* SIDEBAR*/
+.mcSidebar {
+    width: 220px;
+    margin-top: 16px;
+    padding: 8px;
+}
+
+.mcSidebar div {
+    padding: 12px;
+}
+
+.mcSidebar:hover {
+    cursor: pointer;
+}
+
+.mcSidebar .mcsDropdown {
+    background-color: #ebebeb;
+    margin-left: 12px;
+    border-radius: 8px;
+    padding: 0; /* don't add extra padding on this block */
+}
+
+.mcSidebar .mcsDropdown div:not(:last-child) {
+    border-bottom: 1px solid #8f8f8f;
+}
