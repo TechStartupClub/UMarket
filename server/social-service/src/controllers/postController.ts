@@ -43,7 +43,11 @@ export const createPost = async (req: Request, res: Response): Promise<void> => 
             VALUES ($1, $2, $3, $4)
             `, [user_id, text_content, media_type, media_url]
         );
-        res.status(200);
+        console.log(result)
+        res.status(200).json({ 
+            message: "Success", 
+            // postId: result.rows[0]?.id 
+        });;
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: "Server error" });
