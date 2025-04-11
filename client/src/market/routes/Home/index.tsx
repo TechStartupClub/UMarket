@@ -4,13 +4,26 @@ import Sidebar from '../../components/Sidebar';
 import ListView from '../../components/ListView';
 import { Menu, Settings2, ChevronsUpDown } from 'lucide-react';
 
+interface IHeaders {
+    sidebarToggleState: () => void
+}
+interface IFilterBar {
+    showOnMobile: boolean
+}
+
 const Home: React.FC = () => {
+    const [showSidebarMobile, setShowSidebarMobile] = useState(false);
+
+    const toggleSidebarMobile = () => {
+        setShowSidebarMobile(!showSidebarMobile);
+    }
+
     return (
         <main>
-            <Headers></Headers>
+            <Headers sidebarToggleState={toggleSidebarMobile}></Headers>
             <section>
                 <div className={Style.marketContent}>
-                    <Sidebar></Sidebar>
+                    <Sidebar showOnMobile={showSidebarMobile}></Sidebar>
                     <ListView></ListView>
                 </div>
             </section>
@@ -18,11 +31,12 @@ const Home: React.FC = () => {
     );
 };
 
-const Headers: React.FC = () => {
-    const [showSortDropdown, setShowSortDropdown] = useState(false);
+const Headers: React.FC<IHeaders> = ({sidebarToggleState}) => {
+    const [showFilterBarMobile, setShowFilterBarMobile] = useState(false);
+    
 
-    const toggleShowSortDrop = () => {
-        setShowSortDropdown(!showSortDropdown);
+    const toggleFilterBarMobile = () => {
+        setShowFilterBarMobile(!showFilterBarMobile);
     }
 
     return (
@@ -40,35 +54,48 @@ const Headers: React.FC = () => {
                     </div>
 
                     <div className={Style.mhMiniNav}>
-                        <button><Menu size={26} /></button>
-                        <button><Settings2 size={26} /></button>
+                        <button onClick={sidebarToggleState}><Menu size={26} /></button>
+                        <button onClick={toggleFilterBarMobile}><Settings2 size={26} /></button>
                     </div>
 
-                    <div className={Style.mhFilters}>
-                        <div className={Style.mhfPriceRange}>
-                            <div>Price Range</div>
-                            <input type="text" className={Style.filterTxt} placeholder="Min" />
-                            to
-                            <input type="text" className={Style.filterTxt} placeholder="Max" />
-                        </div>
-
-                        <div className={Style.mhSortArea}>
-                            <button type="button" onClick={toggleShowSortDrop}>
-                                <span>
-                                    Sort <ChevronsUpDown size={16} strokeWidth={3} />
-                                </span>
-                            </button>
-
-                            {showSortDropdown ? <SortOptions /> : <></>}
-                        </div>
-                    </div>
+                    <FilterBar showOnMobile={showFilterBarMobile} />
+                    
                 </div>
             </section>
     );
 }
 
+const FilterBar: React.FC<IFilterBar> = ({showOnMobile}) => {
+    const [showSortDropdown, setShowSortDropdown] = useState(false);
+
+    const toggleShowSortDrop = () => {
+        setShowSortDropdown(!showSortDropdown);
+    }
+
+    return (
+        <div className={`${Style.mhFilters} ${!showOnMobile && Style.hideOnMobile}`}>
+            <div className={Style.mhfPriceRange}>
+                <div>Price Range</div>
+                <input type="text" className={Style.filterTxt} placeholder="Min" />
+                to
+                <input type="text" className={Style.filterTxt} placeholder="Max" />
+            </div>
+
+            <div className={Style.mhSortArea}>
+                <button type="button" onClick={toggleShowSortDrop}>
+                    <span>
+                        Sort <ChevronsUpDown size={16} strokeWidth={3} />
+                    </span>
+                </button>
+
+                {showSortDropdown && <SortOptions />}
+            </div>
+        </div>
+    );
+}
+
 const SortOptions: React.FC = () => {
-    return(
+    return (
         <div className={Style.mhSortOptions}>
             <div><button type="button">Name</button></div>
             <div><button type="button">Leaving Soon</button></div>
