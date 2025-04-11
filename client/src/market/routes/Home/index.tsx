@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Style from './index.module.css';
 import Sidebar from '../../components/Sidebar';
 import ListView from '../../components/ListView';
+import { Menu, Settings2, ChevronsUpDown } from 'lucide-react';
 
 const Home: React.FC = () => {
     return (
@@ -18,6 +19,12 @@ const Home: React.FC = () => {
 };
 
 const Headers: React.FC = () => {
+    const [showSortDropdown, setShowSortDropdown] = useState(false);
+
+    const toggleShowSortDrop = () => {
+        setShowSortDropdown(!showSortDropdown);
+    }
+
     return (
         <section>
                 <div className={Style.marketHeaderA}>
@@ -33,8 +40,8 @@ const Headers: React.FC = () => {
                     </div>
 
                     <div className={Style.mhMiniNav}>
-                        <button>Sidebar placeholder</button>
-                        <button>Price range placeholder</button>
+                        <button><Menu size={26} /></button>
+                        <button><Settings2 size={26} /></button>
                     </div>
 
                     <div className={Style.mhFilters}>
@@ -44,10 +51,28 @@ const Headers: React.FC = () => {
                             to
                             <input type="text" className={Style.filterTxt} placeholder="Max" />
                         </div>
-                        <div>Sort</div>
+
+                        <div className={Style.mhSortArea}>
+                            <button type="button" onClick={toggleShowSortDrop}>
+                                <span>
+                                    Sort <ChevronsUpDown size={16} strokeWidth={3} />
+                                </span>
+                            </button>
+
+                            {showSortDropdown ? <SortOptions /> : <></>}
+                        </div>
                     </div>
                 </div>
             </section>
+    );
+}
+
+const SortOptions: React.FC = () => {
+    return(
+        <div className={Style.mhSortOptions}>
+            <div><button type="button">Name</button></div>
+            <div><button type="button">Leaving Soon</button></div>
+        </div>
     );
 }
 
