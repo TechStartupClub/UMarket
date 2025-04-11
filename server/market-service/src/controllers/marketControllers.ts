@@ -35,3 +35,26 @@ export const getRecentItems = async (req: Request, res: Response): Promise<void>
         res.status(500).json({ error: 'Server Error' });
     }
 };
+
+export const getUserItems = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const userId: number = parseInt(req.params.userId, 10);
+        if (isNaN(userId)) {
+            res.status(400).send({ error: "Invalid user id" });
+            return;
+        }
+        const result = await marketPool.query(
+            `
+            SELECT up.first_name, up.last_name, up.profile_picture, u.username, i.item_id, i.name, i.description, i.price, i.condition, i.timestamp 
+            FROM items i
+            JOIN user_profiles up ON i.user_id = up.user_id 
+            JOIN users u ON i.user_id = u.user_id
+            WHERE i.user_id = $1
+            `, [userId]
+        );
+        res.status(200).send(result.rows);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "Server error" });
+    }
+}
