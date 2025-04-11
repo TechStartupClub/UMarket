@@ -8,7 +8,7 @@
     row-gap: 16px;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1440px) {
     .mcListings {
         grid-template-columns: 1fr 1fr 1fr;
     }
