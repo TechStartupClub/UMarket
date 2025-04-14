@@ -1,8 +1,15 @@
 import React from 'react'
 import styles from './index.module.css'
 
+
+const itemDetailsBox = {
+	condition: 'New',
+	brand: 'Nike',
+	color: 'Red',
+	features: 'Lightweight, Waterproof'
+};
+
 const ItemListingPage: React.FC = () => {
-  
   return (
 		<>
 			{/* Container */}
@@ -10,16 +17,16 @@ const ItemListingPage: React.FC = () => {
 				{/* Route Links (Back to homepage) */}
 				<div className={styles.routeLinks}>
 					<p>
-						Back to home page &bull;&nbsp; 
+						<span className={styles.routeLinksHome}>Back to home page</span>
+						<span>&nbsp;&bull;&nbsp;</span>
 						<span className={styles.routeLinksPart}>School Materials &gt;&nbsp;</span>
 						<span className={styles.routeLinksPart}>Bags</span>
 						<span className={styles.routeLinksShare}>Share</span>
 					</p>
 				</div>
-
 	
 				{/* Main content container */}
-				<div className={styles.mainContent}>
+				<div className={styles.mainContentContainer}>
 					{/* Left Section: Item Image */}
 					<div className={styles.imageSection}>
 						<div className={styles.itemImage}>Item Image</div>
@@ -62,6 +69,41 @@ const ItemListingPage: React.FC = () => {
 						</div>
 					</div>
 				</div>
+
+				{/* Item Specifics Information Div */}
+				<div className={styles.specificsContainer}>
+					<div className={styles.innerSpecificsContainer}>
+						<h4>About this item</h4>
+						<h2>item Specifics</h2>
+						<div className={styles.itemRow}>
+							<div className={styles.itemLabel}>Condition</div>
+							<div className={styles.itemValue}>{itemDetailsBox.condition}</div>
+						</div>
+						<div className={styles.itemRow}>
+							<div className={styles.itemLabel}>Brand</div>
+							<div className={styles.itemValue}>{itemDetailsBox.brand}</div>
+						</div>
+						<div className={styles.itemRow}>
+							<div className={styles.itemLabel}>Color</div>
+							<div className={styles.itemValue}>{itemDetailsBox.color}</div>
+						</div>
+						<div className={styles.itemRow}>
+							<div className={styles.itemLabel}>Features</div>
+							<div className={styles.itemValue}>{itemDetailsBox.features}</div>
+						</div>
+						<div className={styles.itemDescription}>
+							<h2>Item Description From Seller</h2>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque aut, adipisci
+								incidunt nam rem necessitatibus eveniet aperiam commodi, laboriosam esse et voluptatem
+								aliquam consequuntur deleniti dignissimos perferendis totam nisi, non doloribus ipsa
+								cupiditate? Quo quae quod aspernatur quisquam? Incidunt est accusantium, sint dicta
+								necessitatibus reprehenderit perferendis pariatur officia ab explicabo.
+							</p>
+						</div>
+					</div>
+				</div>
+
 			</div>
 		</>
 	);	
