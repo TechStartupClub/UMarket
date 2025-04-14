@@ -104,6 +104,53 @@ const ItemListingPage: React.FC = () => {
 					</div>
 				</div>
 
+				<div className={styles.aboutSellerContainer}>
+					<div className={styles.leftAboutSellerSection}>
+						<h4>About this seller</h4>
+						<div className={styles.innerLeftGrid}>
+							<div className={styles.sellerProfilePic}>Seller Picture</div>
+							<div className={styles.sellerRatings}>
+								<h2>Player222</h2>
+								<p>100% Positive Feedback</p>
+								<p>4 items sold</p>
+							</div>
+						</div>
+						<div className={styles.sellerButtons}>
+							<button className={styles.buyButton}>Seller's other items</button>
+							<button className={styles.cartButton}>Contact</button>
+							<button className={styles.wishlistButton}>Save seller</button>
+						</div>	
+					</div>
+					<div className={styles.rightAboutSellerSection}>
+						<h4>Seller Feedback</h4>
+						<div className={styles.innerRightGrid}>
+							<div className={styles.sellerFeedbackUser}>
+								<h3>Player001</h3>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, aspernatur!</p>
+							</div>
+							<div className={styles.sellerFeedbackUser}>
+								<h3>Player002</h3>
+								<p>
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, veniam laborum
+									enim amet soluta dolore?
+								</p>
+							</div>
+							<div className={styles.sellerFeedbackUser}>
+								<h3>Player003</h3>
+								<p>
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus reprehenderit
+									aperiam, culpa asperiores nemo quaerat fugiat nulla omnis amet nihil repellendus
+									consequuntur temporibus obcaecati optio
+								</p>
+							</div>
+							<div className={styles.feedbackButtonContainer}>
+								<button className={styles.feedbackButton}>See all feedback</button>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+
 			</div>
 		</>
 	);	
