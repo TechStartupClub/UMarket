@@ -23,3 +23,18 @@
 .mcSidebar .mcsDropdown div:not(:last-child) {
     border-bottom: 1px solid #8f8f8f;
 }
+
+/* DON'T hide content with this tag when not in mobile view */
+.hideOnMobile {
+    display: initial;
+}
+
+@media screen and (max-width: 960px) {
+    .mcSidebar {
+        width: 160px;
+    }
+
+    .hideOnMobile { /* Hide all content with this tag when mobile view is active */
+        display: none;
+    }
+}
