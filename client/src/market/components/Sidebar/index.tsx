@@ -1,9 +1,13 @@
 import React from 'react';
 import Style from './index.module.css';
 
-const Sidebar: React.FC = () => {
+interface ISidebar {
+    showOnMobile: boolean
+}
+
+const Sidebar: React.FC<ISidebar> = ({showOnMobile}) => {
     return (
-        <div className={Style.mcSidebar}>
+        <div className={`${Style.mcSidebar} ${!showOnMobile && Style.hideOnMobile}`}>
             <div>Watchlist</div>
             <div>Purchases</div>
             <div>Selling</div>

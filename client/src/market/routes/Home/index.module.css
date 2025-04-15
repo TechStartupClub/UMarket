@@ -5,8 +5,9 @@ body {
 }
 
 main {
-    margin-left: 15%;
-    margin-right: 15%;
+    /*margin-left: 10%;
+    margin-right: 10%;*/
+    margin-top: 48px;
 }
 
 /* Headers */
@@ -51,6 +52,15 @@ main {
     font-weight: 600;
 }
 
+.mhMiniNav {
+    display: none;
+}
+
+.mhMiniNav button {
+    background: none;
+    border: none;
+}
+
 .mhFilters {
     display: flex;
     gap: 24px;
@@ -71,8 +81,76 @@ main {
     border: 1px solid rgb(205, 205, 205);
 }
 
+.mhSortArea button {
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    border: none;
+    background: none;
+}
+
+.mhSortArea button:hover {
+    cursor: pointer;
+}
+
+.mhSortArea button span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.mhSortOptions {
+    border: 1px solid gray;
+    border-radius: 6px;
+    position: absolute;
+}
+
+.mhSortOptions div {
+    padding: 1px;
+    background-color: white;
+    border-radius: 6px;
+}
+
+.mhSortOptions button {
+    width: 100%;
+    padding: 2px;
+    text-align: left;
+}
+
+.mhSortOptions button:hover {
+    background-color: #f0f0f0;
+}
+
 /* Main Content */
 .marketContent {
     display: flex;
     gap: 24px;
+}
+
+/* DON'T hide content with this tag when not in mobile view */
+.hideOnMobile {
+    display: inherit;
+}
+
+@media screen and (max-width: 960px) {
+    main {
+        margin-top: 12px;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .marketHeaderB {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .mhMiniNav {
+        display: flex;
+        gap: 16px;
+        margin-top: 24px;
+    }
+
+    .hideOnMobile { /* Hide all content with this tag when mobile view is active */
+        display: none;
+    }
 }

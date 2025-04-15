@@ -4,6 +4,7 @@ import PageLayout from './shared/components/layout/PageLayout';
 import HomePage from './shared/routes/Home';
 import MarketPage from './market/routes/Home';
 import AboutPage from './shared/routes/About';
+import ContactPage from './shared/routes/Contact';
         
 const App: React.FC = () => {
    return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
                    <Route path="/" element={<HomePage />} />
                    <Route path="/market" element={<MarketPage />} />
                    <Route path="/about" element={<AboutPage />} />
+                   <Route path="/contact" element={<ContactPage />} />
                </Routes>
            </PageLayout>
        </Router>

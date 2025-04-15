@@ -9,11 +9,12 @@ export const postComments = async (req: Request, res: Response): Promise<void> =
             return;
         }
         const result = await socialPool.query(
-            `SELECT u.username, c.post_id, c.user_id, c.text_content, c.timestamp
+            `
+            SELECT u.username, c.post_id, c.user_id, c.text_content, c.timestamp
             FROM comments c 
             JOIN users u ON c.user_id = u.user_id 
-            WHERE post_id = $1`,
-            [postId]
+            WHERE post_id = $1
+            `, [postId]
         );
         res.status(200).send(result.rows);
     } catch (error) {
