@@ -19,3 +19,10 @@
     margin-top: 0;
     margin-bottom: 8px;
 }
+
+@media screen and (max-width: 1080px) {
+    .mcListCard .mcCardImage img {
+        width: 172px;
+        height: 172px;
+    }
+}

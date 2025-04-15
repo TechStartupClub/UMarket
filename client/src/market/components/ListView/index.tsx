@@ -11,6 +11,30 @@ const ListView: React.FC = (view) => {
                 url="/"
                 img="/src/assets/logos/tsc/Tech%20Startup%20Club%20Logo.png"
                 imgText="TSC Seal"></ListCard>
+            <ListCard
+                name="TSC Seal 2"
+                price="1000.00"
+                url="/"
+                img="/src/assets/logos/tsc/Tech%20Startup%20Club%20Logo.png"
+                imgText="TSC Seal"></ListCard>
+            <ListCard
+                name="TSC Seal 2"
+                price="1000.00"
+                url="/"
+                img="/src/assets/logos/tsc/Tech%20Startup%20Club%20Logo.png"
+                imgText="TSC Seal"></ListCard>
+            <ListCard
+                name="TSC Seal 2"
+                price="1000.00"
+                url="/"
+                img="/src/assets/logos/tsc/Tech%20Startup%20Club%20Logo.png"
+                imgText="TSC Seal"></ListCard>
+            <ListCard
+                name="TSC Seal 2"
+                price="1000.00"
+                url="/"
+                img="/src/assets/logos/tsc/Tech%20Startup%20Club%20Logo.png"
+                imgText="TSC Seal"></ListCard>
         </div>
     );
 }
