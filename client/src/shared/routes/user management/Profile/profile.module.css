@@ -130,3 +130,50 @@
   object-fit: cover;
   border-radius: 12px;
 }
+
+@media (max-width: 768px) {
+  .profileDetails {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .avatar {
+    margin: 0 auto;
+  }
+
+  .info {
+    text-align: center;
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .followButton,
+  .messageButton {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .stats {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .postingsGrid {
+    grid-template-columns: 1fr; /* Stack posts on mobile */
+  }
+
+  .postingsHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .complimentsTags {
+    flex-direction: column;
+    align-items: center;
+  }
+}
