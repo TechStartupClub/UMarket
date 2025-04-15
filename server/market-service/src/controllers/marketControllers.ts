@@ -35,3 +35,46 @@ export const getRecentItems = async (req: Request, res: Response): Promise<void>
         res.status(500).json({ error: 'Server Error' });
     }
 };
+
+    // create item
+export const createItem = async (req: Request, res: Response): Promise<void> => {
+    try {
+      // Extract item data from request body
+      const { name, price, description, media_url } = req.body;
+      
+      // Validate required fields
+      if (!name || !price) {
+        res.status(400).json({ error: 'Name and price are required fields' });
+        return;
+      }
+      
+      // Validate price is a positive number
+      if (typeof price !== 'number' || price <= 0) {
+        res.status(400).json({ error: 'Price must be a positive number' });
+        return;
+      }
+      
+      // Insert the new item into the database
+      const result = await marketPool.query(
+        'INSERT INTO items (name, price, description, media_url) VALUES ($1, $2, $3, $4) RETURNING item_id, name, price, media_url',
+        [name, price, description, media_url]
+      );
+      
+      // Check if the item was created successfully
+      if (result.rows.length === 0) {
+        res.status(500).json({ status: 'failed', error: 'Failed to create item' });
+        return;
+      }
+      
+      // Return success response with the created item
+      res.status(201).json({ 
+        status: 'success', 
+        item: result.rows[0]
+      });
+      
+    } catch (error) {
+      // Log the error and return a 500 status code
+      console.error('Error creating item:', error);
+      res.status(500).json({ status: 'failed', error: 'Server Error' });
+    }
+  };
