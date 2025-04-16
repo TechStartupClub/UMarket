@@ -26,15 +26,15 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     next();
 });
 
-// Middleware for parsing JSON and URL-encoded data
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
 // routes for each microservice
 app.use("/auth", authRoutes);
 app.use("/social", socialRoutes);
 app.use("/market", marketRoutes);
 // app.use("/message", msgRoutes);
+
+// Middleware for parsing JSON and URL-encoded data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Error handling middleware
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
