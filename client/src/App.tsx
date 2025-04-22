@@ -5,7 +5,7 @@ import HomePage from './shared/routes/Home';
 import MarketPage from './market/routes/Home';
 import AboutPage from './shared/routes/About';
 import ContactPage from './shared/routes/Contact';
-import ListingPage from './market/routes/Item Listing';
+import ListingPage from './market/routes/ItemListing';
         
 const App: React.FC = () => {
    return (
