@@ -1,0 +1,298 @@
+/* Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 0px 20px 0px;
+    min-height: 100vh;
+}
+
+
+.routeLinks {
+    width: 100%;
+}
+
+.routeLinks p {
+    display: flex;
+}
+
+.routeLinksHome {
+    text-decoration: underline;
+}
+
+.routeLinksPart {
+    color: #7e7e7e;
+}
+
+.routeLinksShare {
+    margin-left: auto;
+    color: #7e7e7e;
+}
+
+/* Main content container */
+.mainContentContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 20px;
+    }
+
+/* Left Section: Item Image */
+.imageSection {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.itemImage {
+aspect-ratio: 1 / 1;
+width: 100%;
+max-height: 100%;
+background-color: #f0f0f0;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 18px;
+color: #333;
+text-align: center;
+}
+
+/* Right Section: Item Details */
+.detailsSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Title Section */
+.titleSection h2 {
+    font-size: 35px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Seller Profile */
+.sellerProfile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sellerProfilePic {
+    width: 50px;
+    height: 50px;
+    background-color: #ddd;
+    border-radius: 50%;
+}
+
+.sellerProfile span {
+    font-size: 16px;
+    color: #000;
+}
+
+/* Price and Condition */
+.priceAndCondition {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #000;
+}
+
+.condition {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Action Buttons */
+.actionButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.buyButton, .cartButton, .wishlistButton {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.buyButton {
+    background-color: #8B5CF6;
+    color: white;
+}
+
+.cartButton {
+    background-color: #c1c1c1;
+    color: white;
+}
+
+.wishlistButton {
+    background-color: #c1c1c1;
+    color: white;
+}
+
+/* Additional Info */
+.additionalInfo p {
+    display: flex;
+    gap: 40px;
+    font-size: 14px;
+    color: #666;
+}
+
+.infoLabel {
+    flex-basis: 60px;
+    text-align: right;
+}
+
+.specificsContainer {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.innerSpecificsContainer h4 {
+    margin-bottom: 20px;
+    color: #8B5CF6;
+}
+
+.innerSpecificsContainer h2 {
+    margin-bottom: 10px;
+}
+
+.itemRow {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    align-items: start;
+}
+
+.itemLabel {
+    color: #7e7e7e;
+}
+
+.itemDescription h2 {
+    margin-top: 40px;
+}
+
+.itemDescription p {
+    max-width: 70%;
+}
+
+.aboutSellerContainer {
+    display: grid;
+    grid-template-columns: 3fr 4fr;
+    width: 100%;
+    margin-top: 80px;
+}
+
+.aboutSellerContainer h4 {
+    color: #8B5CF6;
+    margin-bottom: 20px;
+}
+
+.innerLeftGrid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.innerLeftGrid h4 {
+    color: #000;
+}
+
+.aboutSellerContainer .sellerProfilePic {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ddd;
+    border-radius: 50%;
+}
+
+.sellerRatings {
+    padding-left: 20px;
+}
+
+.sellerButtons {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+    width: 60%;
+}
+
+.innerRightGrid {
+    display: grid;
+    flex-direction: row;
+}
+
+.sellerFeedbackUser {
+    margin: 5px 0px;
+}
+
+.feedbackButtonContainer {
+    margin-top: 150px;
+}
+
+.feedbackButton {
+    width: 40%;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    background-color: #d4d4d4;
+}
+
+@media (max-width: 768px) {
+    .mainContentContainer {
+        flex-direction: column;
+    }
+    
+    .mainContentContainer .imageSection .itemImage {
+        aspect-ratio: 1 / 1;
+        width: 100%;
+        max-height: 100%;
+    }
+
+    .innerSpecificsContainer .itemRow {
+        grid-template-columns: 100px 1fr;
+    }
+
+    .routeLinks {
+        display: none;
+    }
+
+    .routeLinksHome {
+        display: contents;
+    }
+
+    .aboutSellerContainer {
+        display: grid;
+        grid-template-columns: auto;
+    }
+
+    .leftAboutSellerSection .sellerButtons {
+        margin: 0 auto;
+    }
+
+    .innerLeftGrid {
+        display: grid;
+        grid-template-columns: auto;
+        gap: 10px;
+        justify-content: center;
+        align-items: center ;
+    }
+
+} 
+  
