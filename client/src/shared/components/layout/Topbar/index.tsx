@@ -18,7 +18,6 @@ const Topbar: React.FC = () => {
                 </div>
                 <div className={styles.right}>
                     <Link to="/about"><span>About</span></Link>
-                    <Link to={'/socialPage'}><span>My Profile</span></Link>
                     <Link to="/contact"><span>Help & Contact</span></Link>
                     <Link to="/profile">
                         <span className={styles.userProfile}>
