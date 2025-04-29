@@ -11,6 +11,7 @@
     "all": "concurrently \"npm run dev\" \"cd ../server/auth-service && npm run dev\" \"cd ../server/gateway && npm run dev\" \"cd ../server/market-service && npm run dev\" \"cd ../server/social-service && npm run dev\""
   },
   "dependencies": {
+    "@tabler/icons-react": "^3.31.0",
     "@types/history": "^4.7.11",
     "@types/prop-types": "^15.7.14",
     "@types/react-router-dom": "^5.3.3",
