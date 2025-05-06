@@ -1,4 +1,4 @@
-import { IconStar, IconMessage, IconCircleCheck, IconHeart, IconBellPlus } from "@tabler/icons-react";
+// import { IconStar, IconMessage, IconCircleCheck, IconHeart, IconBellPlus } from "@tabler/icons-react";
 import styles from './profile.module.css';
 
 import alexYu from "../../../../assets/images/profile-photos/alexYu.jpg";
@@ -35,7 +35,7 @@ const ProfilePage = () => {
       {/* Profile Section */}
       <div className={styles.profileCard}>
   <div className={styles.profileDetails}>
-    <img src={user.avatar} alt="avatar" className={styles.avatar} />
+    {/* <img src={user.avatar} alt="avatar" className={styles.avatar} /> */}
     
     <div className={styles.info}>
       <h2>
@@ -48,16 +48,16 @@ const ProfilePage = () => {
         <span>{user.following} Following</span>
       </div>
       <div className={styles.rating}>
-        {[...Array(user.rating)].map((_, i) => (
+        {/* {[...Array(user.rating)].map((_, i) => (
           <IconStar key={i} size={20} color="#fbbf24" />
-        ))}
+        ))} */}
       </div>
     </div>
     
     <div className={styles.actions}>
       <button className={styles.followButton}>Follow</button>
       <button className={styles.messageButton}>
-        <IconMessage size={16} /> Message
+        {/* <IconMessage size={16} /> Message */}
       </button>
     </div>
   </div>
@@ -68,7 +68,7 @@ const ProfilePage = () => {
       <div className={`${styles.complimentsSection}`}>
         <h3>Compliments</h3>
         <div className={styles.complimentsTags}>
-          <span>
+          {/* <span>
             <IconCircleCheck size={16} color="#6c63ff" /> {user.compliments.itemAsDescribed} Item as described
           </span>
           <span>
@@ -76,7 +76,7 @@ const ProfilePage = () => {
           </span>
           <span>
             <IconCircleCheck size={16} color="#6c63ff" /> {user.compliments.communicative} Communicative
-          </span>
+          </span> */}
         </div>
       </div>
 

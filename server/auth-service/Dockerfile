@@ -1,5 +1,5 @@
 # Pick Node.js to run instance of node app
-FROM node:20
+FROM node:23
 
 # Set working directory in the container
 WORKDIR /auth-app
@@ -9,6 +9,7 @@ COPY server/auth-service/package.json ./
 
 # Install dependencies
 RUN npm install
+RUN npm install -g nodemon
 
 # Copy application code
 COPY server/auth-service /auth-app
