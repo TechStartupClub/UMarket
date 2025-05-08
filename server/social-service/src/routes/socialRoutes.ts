@@ -1,13 +1,19 @@
-import { Router } from "express";
-import { createPost, updatePost, userPosts, likePost } from "../controllers/postController";
-import { postComments } from "../controllers/commentController";
+import {Router} from 'express';
+
+import {createPost, likePost, updatePost} from '../controllers/protectedPostCont';
+import {getPostComments} from '../controllers/publicCommentCont';
+import {userPosts} from '../controllers/publicPostCont';
+import verifyToken from '../middleware/verification';
 
 const router = Router();
 
-router.get("/user/:userId/posts", userPosts);
-router.get("/comments/post/:postId", postComments)
-router.post("/posts/create", createPost);
-router.patch("/posts/update/:postId", updatePost);
-router.patch("/posts/:postId/like", likePost);
+// public
+router.get('/user/:userId/posts', userPosts);
+router.get('/comments/post/:postId', getPostComments);
+
+// protected
+router.post('/posts/create', verifyToken, createPost);
+router.patch('/posts/update/:postId', verifyToken, updatePost);
+router.patch('/posts/:postId/like', verifyToken, likePost);
 
 export default router;
