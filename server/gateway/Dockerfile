@@ -15,7 +15,7 @@ RUN npm install -g nodemon
 COPY server/gateway /gateway-app
 
 # Expose Port
-EXPOSE ${GATEWAY_PORT}
+EXPOSE ${GATEWAY_SERVICE_PORT}
 
 # Comamands to start nodemon
 CMD ["npm", "run", "dev"]
