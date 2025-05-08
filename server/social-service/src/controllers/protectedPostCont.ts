@@ -15,7 +15,6 @@ const likePostSchema = z.object({user_id: z.number().int()});
 export const createPost = async(req: Request, res: Response):
     Promise<void> => {
       try {
-        console.log(req)
         const parsedData = createPostSchema.parse(req.body);
         const {user_id, text_content, media_type, media_url} = parsedData;
 

@@ -28,13 +28,11 @@ export const googleCallback = async (req: Request, res: Response): Promise<void>
 
     // generate and set access token
     const token = jwt.sign(user, process.env.JWT_SECRET as string, { expiresIn: "30m" });
-    res.cookie("token", token, { httpOnly: true, sameSite: "strict" }); // adjust for HTTPS later
+    res.cookie("token", token, { httpOnly: true, sameSite: "strict" }); 
 
     // decide on refresh token later
 
-    /*
-    CHANGE THE REDIRECT ROUTE FOR WHATEVER NEEDED
-    */
+    // FIXME: CHANGE THE REDIRECT ROUTE FOR WHATEVER NEEDED
     res.redirect("http://localhost:5173/profile");
 };
 
