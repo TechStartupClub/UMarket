@@ -3,6 +3,7 @@ import { Router } from "express";
 import {
   createPost,
   likePost,
+  unlikePost,
   updatePost,
 } from "../controllers/protectedPostCont";
 import { getPostComments } from "../controllers/publicCommentCont";
@@ -19,5 +20,6 @@ router.get("/comments/post/:postId", getPostComments);
 router.post("/posts/create", verifyToken, createPost);
 router.patch("/posts/update/:postId", verifyToken, updatePost);
 router.patch("/posts/:postId/like", verifyToken, likePost);
+router.delete("/posts/:postId/unlike", verifyToken, unlikePost);
 
 export default router;
