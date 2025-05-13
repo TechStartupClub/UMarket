@@ -56,7 +56,7 @@ export const likePost = async (req: Request, res: Response): Promise<void> => {
     const alreadyContains = await socialPool.query(
       `
       SELECT 1 FROM post_likes WHERE user_id = ($1) AND post_id = ($2)  
-      `, [user_id, post_id],
+      `, [user_id, post_id]
     );
 
     if (alreadyContains.rowCount !== 0) {
@@ -77,7 +77,7 @@ export const likePost = async (req: Request, res: Response): Promise<void> => {
       `
             SELECT post_id::bigint AS estimate FROM post_likes where post_id =  $1;
         `,
-      [post_id],
+      [post_id]
     );
 
     res.status(200).send({ likeCount: result.rowCount });
