@@ -37,7 +37,9 @@ socialRoutes.use('/public', createProxyMiddleware({
     }
 }));
 
-socialRoutes.use('/', verifyToken, createProxyMiddleware({
+// FIXME:
+// socialRoutes.use('/', verifyToken, createProxyMiddleware({
+socialRoutes.use('/', createProxyMiddleware({
     target: SOCIAL_SERVICE_URL,
     changeOrigin: true,
     // debug

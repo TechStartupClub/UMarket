@@ -5,6 +5,7 @@ import express from 'express';
 
 import socialPool from './config/db';
 import socialRoutes from './routes/socialRoutes';
+import cookieParser from 'cookie-parser';
 
 dotenv.config({path: '../../.env'});
 
@@ -15,6 +16,7 @@ const port: string|Number|undefined = process.env.SOCIAL_SERVICE_PORT;
 
 // Middleware
 socialServiceApp.use(cors());
+socialServiceApp.use(cookieParser())
 socialServiceApp.use(express.json());
 socialServiceApp.use(express.urlencoded({extended: true}));
 

@@ -37,7 +37,9 @@ marketRoutes.use('/public', createProxyMiddleware({
     }
 }));
 
-marketRoutes.use('/', verifyToken, createProxyMiddleware({
+// FIXME:
+// marketRoutes.use('/', verifyToken, createProxyMiddleware({
+marketRoutes.use('/', createProxyMiddleware({
     target: MARKET_SERVICE_URL,
     changeOrigin: true,
     // debug

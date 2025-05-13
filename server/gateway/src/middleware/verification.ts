@@ -20,14 +20,15 @@ export const verifyToken =
         res.status(401).json({message: 'Unauthorized user'});
         return;
       }
+      console.log(token)
 
       try {
         const user =
             jwt.verify(token, process.env.JWT_SECRET as string) as DecodedUser;
-        res.json(user);
-        console.log(res)
+        // req.user = user;
+        next()
       } catch {
-        res.status(401).json({message: 'Invalid token'});
+        res.status(401).json({message: 'Invalid token gateway'});
       }
     }
 

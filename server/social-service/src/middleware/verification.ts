@@ -1,7 +1,16 @@
 import {NextFunction, Request, Response} from 'express';
 import jwt from 'jsonwebtoken';
 
+declare global {
+  namespace Express {
+    interface Request {
+      user?: DecodedUser;
+    }
+  }
+}
+
 interface User {
+  user_id: number;
   google_id: string;
   display_name: string;
   email: string;
@@ -24,10 +33,14 @@ export const verifyToken =
       try {
         const user =
             jwt.verify(token, process.env.JWT_SECRET as string) as DecodedUser;
-        res.json(user);
-        console.log(res)
-      } catch {
-        res.status(401).json({message: 'Invalid token'});
+
+        req.user = user;
+        next()
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          res.status(401).json(
+              {message: 'Invalid token in so', err: error.message});
+        }
       }
     }
 

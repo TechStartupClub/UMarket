@@ -9,8 +9,11 @@ const router = Router();
  * - Requests profile and email permissions.
  */
 router.get(
-    "/google",
-    passport.authenticate("google", { scope: ["profile", "email"] })
+  "/google",
+  passport.authenticate("google", {
+    prompt: "consent",
+    scope: ["profile", "email"],
+  }),
 );
 
 /**
@@ -18,9 +21,9 @@ router.get(
  * - Handles authentication and sets a JWT token on successful login.
  */
 router.get(
-    "/google/callback",
-    passport.authenticate("google", { session: false }),
-    googleCallback
+  "/google/callback",
+  passport.authenticate("google", { session: false }),
+  googleCallback,
 );
 
 /**
