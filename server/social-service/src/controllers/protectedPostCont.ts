@@ -47,7 +47,7 @@ export const likePost = async (req: Request, res: Response): Promise<void> => {
     const post_id: number = parseInt(req.params.postId, 10);
 
     if (isNaN(post_id)) {
-      res.status(400).send({ error: "Invalid user id" });
+      res.status(400).send({ error: "Invalid post id" });
       return;
     }
 
@@ -94,7 +94,7 @@ export const unlikePost = async (req: Request, res: Response): Promise<void> => 
     const post_id: number = parseInt(req.params.postId, 10);
 
     if (isNaN(post_id)) {
-      res.status(400).send({ error: "Invalid user id" });
+      res.status(400).send({ error: "Invalid post id" });
       return;
     }
 
