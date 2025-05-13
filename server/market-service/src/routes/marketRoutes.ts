@@ -1,13 +1,18 @@
-import express from 'express';
-import { getRecentItems, getUserItems, createItem, deleteItem } from '../controllers/marketControllers';
+import express from "express";
+
+import { createItem, deleteItem } from "../controllers/protectedMarketCont";
+import { getRecentItems, getUserItems } from "../controllers/publicMarketCont";
+import verifyToken from "../middleware/verification";
 
 // Create a new router
 const router = express.Router();
 
-// recent amount is the query parameter that will be passed to the controller
+// public
+router.get("/items/user/:userId", getUserItems);
 router.get("/items/recent", getRecentItems);
-router.get("/items/create", createItem)
-router.get("/items/:itemId/delete", deleteItem)
-router.get("/items/user/:userId", getUserItems)
+
+// protected
+router.post("/items/create", verifyToken, createItem);
+router.delete("/items/:itemId/delete", verifyToken, deleteItem);
 
 export default router;

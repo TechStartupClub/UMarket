@@ -33,13 +33,13 @@ services:
       context: ./
       dockerfile: ./server/gateway/Dockerfile
     ports:
-      - ${GATEWAY_PORT}:${GATEWAY_PORT}
+      - ${GATEWAY_SERVICE_PORT}:${GATEWAY_SERVICE_PORT}
     volumes:
       - ./server/gateway:/gateway-app
     env_file:
       - .env
     environment:
-      - GATEWAY_PORT=${GATEWAY_PORT}
+      - GATEWAY_SERVICE_PORT=${GATEWAY_SERVICE_PORT}
       - MARKET_SERVICE_PORT=${MARKET_SERVICE_PORT}
       - AUTH_SERVICE_PORT=${AUTH_SERVICE_PORT}
       - SOCIAL_SERVICE_PORT=${SOCIAL_SERVICE_PORT}
