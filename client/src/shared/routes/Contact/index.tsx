@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './contact.module.css';
-import logo from '../../../assets/logos/tsc/Tech Startup Club Logo.png';
+import logo from '../../../assets/logos/tsc/Tech_Startup_Club_Logo.png';
 import { useForm } from "react-hook-form";
 
 export default function Contact() {

@@ -7,6 +7,12 @@
     color: black;
 }
 
+/*Enforce size even when the image can't be loaded*/
+.mcListCard .mcCardImage {
+    width:240px;
+    height: 240px;
+}
+
 .mcListCard .mcCardImage img {
     width: 240px;
     height: 240px;
@@ -21,6 +27,12 @@
 }
 
 @media screen and (max-width: 1080px) {
+    /*Enforce size even when the image can't be loaded*/
+    .mcListCard .mcCardImage {
+        width: 172px;
+        height: 172px;
+    }
+    
     .mcListCard .mcCardImage img {
         width: 172px;
         height: 172px;

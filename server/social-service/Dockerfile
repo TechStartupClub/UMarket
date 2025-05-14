@@ -9,7 +9,7 @@ COPY server/social-service/package.json ./
 
 # Install dependencies
 RUN npm install
-RUN npm install -g nodemon
+#RUN npm install -g nodemon
 
 # Copy application code
 COPY server/social-service /social-app
