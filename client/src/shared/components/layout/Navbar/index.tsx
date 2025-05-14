@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import styles from './Navbar.module.css';
+import styles from './navbar.module.css';
 import { User, Search, Bookmark, Mail, Heart, Users, ShoppingBag, Home } from 'lucide-react';
 import BurgerMenu from '../BurgerMenu';
 
