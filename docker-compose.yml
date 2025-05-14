@@ -19,6 +19,7 @@ services:
       - ${AUTH_SERVICE_PORT}:${AUTH_SERVICE_PORT}
     volumes:
       - ./server/auth-service:/auth-app
+      - /auth-app/node_modules
     env_file:
       - .env
     environment:
@@ -36,6 +37,7 @@ services:
       - ${GATEWAY_SERVICE_PORT}:${GATEWAY_SERVICE_PORT}
     volumes:
       - ./server/gateway:/gateway-app
+      - /gateway-app/node_modules
     env_file:
       - .env
     environment:
@@ -59,6 +61,7 @@ services:
       - ${MARKET_SERVICE_PORT}:${MARKET_SERVICE_PORT}
     volumes:
       - ./server/market-service:/market-app
+      - /market-app/node_modules
     env_file:
       - .env
     environment:
@@ -76,6 +79,7 @@ services:
       - ${SOCIAL_SERVICE_PORT}:${SOCIAL_SERVICE_PORT}
     volumes:
       - ./server/social-service:/social-app
+      - /social-app/node_modules
     env_file:
       - .env
     environment:
