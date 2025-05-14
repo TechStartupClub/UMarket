@@ -37,7 +37,7 @@ export const createPost = async (
 
 export const updatePost = async (req: Request, res: Response): Promise<void> => {
   try {
-    
+
     const post_id: number = parseInt(req.params.postId, 10)
 
     if (isNaN(post_id)) {
@@ -92,7 +92,7 @@ export const updatePost = async (req: Request, res: Response): Promise<void> => 
 
     res.status(200).send({ post: result.rows })
 
-  } catch(error) {
+  } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Server error" })
   }
