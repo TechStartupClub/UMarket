@@ -9,7 +9,8 @@ COPY server/gateway/package.json ./
 
 # Install dependencies
 RUN npm install
-#RUN npm install -g nodemon
+RUN npm install -g nodemon
+RUN npm install -g ts-node
 
 # Copy application code
 COPY server/gateway /gateway-app
