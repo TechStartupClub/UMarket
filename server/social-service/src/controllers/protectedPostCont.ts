@@ -45,6 +45,7 @@ export const updatePost = async (req: Request, res: Response): Promise<void> => 
       return;
     }
 
+    const user_id = req.user?.user_id;
     const parsedData = await createPostSchema.parse(req.body);
     const { text_content, media_type, media_url } = parsedData;
 
@@ -53,11 +54,22 @@ export const updatePost = async (req: Request, res: Response): Promise<void> => 
       `
       SELECT 1 FROM posts WHERE post_id = ($1)
       `, [post_id]
-    )
+    );
     if (postExists.rowCount === 0) {
       res.status(400).send({ error: "Post doesn't exist" })
       return;
     }
+
+    const postUserId = await socialPool.query(
+      `
+      SELECT user_id FROM posts WHERE post_id = ($1)
+      `, [post_id]
+    );
+    if (postUserId.rows[0]?.user_id !== user_id) {
+      res.status(400).send({ error: "Invalid token" });
+      return;
+    }
+
 
     if (text_content !== "null") {
       await socialPool.query(
