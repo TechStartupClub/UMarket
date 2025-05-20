@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { User } from 'lucide-react';
 import axios from 'axios';
-import styles from './Topbar.module.css';
-import orange from '../../../../assets/logos/tsc/Orange Pin.png';
+import styles from './topbar.module.css';
+import orange from '../../../../assets/logos/tsc/Orange_Pin.png';
 
 const Topbar: React.FC = () => {
     const [userName, setUserName] = useState('Guest');
