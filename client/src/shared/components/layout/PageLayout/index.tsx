@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 import Topbar from '../Topbar';
-import styles from './PageLayout.module.css';
+import styles from './pagelayout.module.css';
 
 interface PageLayoutProps {
     children: React.ReactNode;

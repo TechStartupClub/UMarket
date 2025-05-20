@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, ChevronRight, ChevronDown, Heart, Mail, Bookmark, User } from 'lucide-react';
 import axios from 'axios';
-import styles from './Burgermenu.module.css';
+import styles from './burgermenu.module.css';
 
 interface BurgerMenuProps {
     isOpen: boolean;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Footer.module.css';
-import logo from '../../../../assets/logos/tsc/Tech Startup Club Logo.png';
+import styles from './footer.module.css';
+import logo from '../../../../assets/logos/tsc/Tech_Startup_Club_Logo.png';
 
 const Footer: React.FC = () => {
     return (
